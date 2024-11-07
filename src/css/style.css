@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaini+Purva&family=Julee&display=swap');
+
 /*
 CSS controls the styling of the page.
 You can write a color in directly, or use variables.
 Try changing the color from blue to red in the
 primary color variable below.
 */
+* {
+	box-sizing: border-box;
+}
 
 :root {
 	--color-primary: blue;
@@ -22,14 +27,265 @@ to help you out.
 	--size-xl: 1200px;
 */
 
-h1 {
-	color: var(--color-primary);
+.intro {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 100vw;
+	min-height: 100vh;
 }
 
-/* This uses the same value as --size-xs. */
-@media screen and (width >= 320px) {
-	.content-container {
-		margin: 0 auto;
-		max-width: 768px;
-	}
+.lingxi {
+	opacity: 1;
+	transition: opacity 1s ease;
+}
+
+.lingxi.fade {
+	opacity: 0;
+}
+
+.lingxi {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.content-container {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: relative;
+}
+
+.bg-circle {
+	width: 500px;
+	aspect-ratio: 1/1;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.loadingbarcontainer {
+	width: 60%;
+	position: absolute;
+	top: calc(30% + 350px);
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.loadingbar {
+	width: 100%;
+	height: 60px;
+	position: relative;
+	z-index: 2;
+}
+
+.rolling-ball {
+	width: 80px;
+	position: absolute;
+	top: -38px;
+	left: 0;
+	z-index: 1;
+}
+
+.introduction-container {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.intro-title {
+	font-family: "Julee", cursive;
+	font-size: 50px;
+	margin: 0;
+	text-align: center;
+	letter-spacing: 0.1em;
+}
+
+.intro-wrapper {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
+
+.intro-bg {
+	width: 100%;
+	aspect-ratio: 1 / 0.95;
+	max-width: 600px;
+}
+
+.intro-content {
+	position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	width: 55%;
+	max-width: 500px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.intro-content p {
+	font-family: "Jaini Purva", system-ui;
+	font-size: 22px;
+	margin: 10px 0;
+	line-height: 30px;
+}
+
+.explorebutton {
+	padding: 10px 15px;
+	font-family: "Jaini Purva", system-ui;
+	font-size: 25px;
+	background-color: #cccccc;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	max-width: 600px;
+	width: 50%;
+	letter-spacing: 0.05em;
+	transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.explorebutton:hover {
+	font-size: 28px;
+	color: white;
+}
+
+.homepage {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+}
+
+.homepage-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.cover {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	z-index: 100;
+}
+
+.leftcover,
+.rightcover {
+	width: 50vw;
+	height: auto;
+	max-height: 100vh;
+	transition: transform 0.5s ease;
+}
+
+.hover-left,
+.hover-right {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 150px;
+	cursor: pointer;
+}
+
+.hover-left {
+	left: 50%;
+	transform: translateX(-100%);
+	z-index: 10;
+}
+
+.hover-right {
+	right: 50%;
+	transform: translateX(100%);
+	z-index: 10;
+}
+
+.mainhomepage {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+}
+
+
+.scenery {
+	position: absolute;
+	top: 20%;
+	right: 10%;
+	width: 18%;
+	height: 65%;
+	transition: 1s ease;
+}
+
+.pet {
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	width: 18%;
+	height: 65%;
+	transition: 1s ease;
+}
+
+
+.nonbs {
+	position: absolute;
+	top: 5%;
+	right: 50%;
+	transform: translateX(50%);
+	width: 60%;
+	height: 95%;
+	z-index: -20;
+}
+
+.clickbs {
+	position: absolute;
+	top: 25%;
+	right: 43%;
+	width: 14%;
+	height: 38%;
+	cursor: pointer;
+	z-index: -10;
+	transition: 1s ease;
+}
+
+.children {
+	position: absolute;
+	bottom: 0;
+	right: 25%;
+	width: 25%;
+	height: auto;
+	z-index: -5;
+	transition: 1s ease;
+}
+
+.comeforward {
+	z-index: 100;
+}
+
+.pet:hover,
+.scenery:hover,
+.children:hover,
+.clickbs:hover {
+	transform: scale(1.1);
+}
+
+.towncitizen,
+.gamepage,
+.petpage,
+.scenerypage p {
+	font-size: 50px;
 }
