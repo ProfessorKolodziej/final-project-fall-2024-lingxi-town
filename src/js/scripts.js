@@ -25,12 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearInterval(interval);
                 setTimeout(() => {
                     window.location.href = "introduction.html";
-                }, 500);
+                }, 1000);
                 document.body.classList.add("fade");
             }
         }, intervalTime);
 
+        localStorage.removeItem('musicTime');
+        localStorage.setItem('musicPlaying', 'true');
     }
+
+
     else if (path.includes("introduction.html")) {
         console.log("This is the Homepage.");
         function navigate() {
@@ -38,6 +42,40 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const ebutton = document.querySelector(".explorebutton");
         ebutton.addEventListener("click", navigate);
+
+        const music = document.getElementById('bgm-intro-home');
+        const musicControlButton = document.getElementById('music-control1');
+        const musicIcon = document.getElementById('music-icon1');
+        const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+        const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+
+        if (isPlaying) {
+            music.currentTime = savedTime;
+            music.play();
+            musicIcon.src = 'images/musicstop.png';
+        } else {
+            music.pause();
+            musicIcon.src = 'images/musicplay.png';
+        }
+
+
+        musicControlButton.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicIcon.src = 'images/musicstop.png';
+                localStorage.setItem('musicPlaying', 'true');
+            } else {
+                music.pause();
+                musicIcon.src = 'images/musicplay.png';
+                localStorage.setItem('musicPlaying', 'false');
+            }
+        });
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('musicTime', music.currentTime);
+        });
+
+
     }
     else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
@@ -46,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const coverright = document.querySelector(".leftcover");
         const coverleft = document.querySelector(".rightcover");
         const comefw = document.querySelector('.mainhomepage');
+        const musicfw = document.querySelector('#music-control2');
 
         function addHoverEffect() {
             coverleft.style.transform = "translateX(20px)";
@@ -77,7 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 comefw.classList.add('comeforward');
-            }, 1000);
+                musicfw.classList.add('comeforward');
+            }, 1500);
         }
 
         hoverright.addEventListener("mouseenter", addHoverEffect);
@@ -93,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const petclick = document.querySelector('.pet');
         const citiclick = document.querySelector('.clickbs');
         const gameclick = document.querySelector('.children');
+        const back = document.getElementById('back1');
 
         scenclick.addEventListener('click', () => {
             window.location.href = "scenery.html";
@@ -106,6 +147,41 @@ document.addEventListener("DOMContentLoaded", () => {
         gameclick.addEventListener('click', () => {
             window.location.href = "game.html";
         })
+        back.addEventListener('click', () => {
+            window.location.href = "introduction.html";
+        })
+
+        const music = document.getElementById('bgm-intro-home');
+        const musicControlButton = document.getElementById('music-control2');
+        const musicIcon = document.getElementById('music-icon2');
+        const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+        const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+
+        if (isPlaying) {
+            music.currentTime = savedTime;
+            music.play();
+            musicIcon.src = 'images/musicstop.png';
+        } else {
+            music.pause();
+            musicIcon.src = 'images/musicplay.png';
+        }
+
+
+        musicControlButton.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicIcon.src = 'images/musicstop.png';
+                localStorage.setItem('musicPlaying', 'true');
+            } else {
+                music.pause();
+                musicIcon.src = 'images/musicplay.png';
+                localStorage.setItem('musicPlaying', 'false');
+            }
+        });
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('musicTime', music.currentTime);
+        });
     }
 
 });
