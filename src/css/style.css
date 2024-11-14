@@ -315,12 +315,6 @@ to help you out.
 	transform: scale(1.1);
 }
 
-.towncitizen,
-.gamepage,
-.petpage,
-.scenerypage p {
-	font-size: 50px;
-}
 
 .music-control2,
 .back1 {
@@ -350,4 +344,67 @@ to help you out.
 
 .back1 {
 	left: 3.5%;
+}
+
+.scenerypage {
+	height: 100%;
+	overflow: hidden;
+}
+
+.scenery-container {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+section {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform 1s ease, opacity 1s ease;
+}
+
+section img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.Scene1 {
+	z-index: 1;
+}
+
+.Scene2,
+.Scene3,
+.Scene4,
+.Scene5,
+.Scene6 {
+	transform: translateX(100%) scale(0.7);
+	/* 初始在右边，缩小 */
+	opacity: 0.6;
+}
+
+.active {
+	transform: translateX(0) scale(1);
+	/* 放大到全屏 */
+	opacity: 1;
+	z-index: 2;
+}
+
+.nexts {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	padding: 10px 20px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	z-index: 3;
 }

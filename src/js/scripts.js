@@ -10,7 +10,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
 
-    if (path.includes("LingxiTown.html")) {
+    if (path.includes("index.html")) {
         console.log("This is the lx page.");
         const rollingBall = document.getElementById("rollingBall");
         const lbc = document.getElementById('loadingbar2');
@@ -184,4 +184,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    else if (path.includes("scenery.html")) {
+        const sections = document.querySelectorAll('section');
+        let currentIndex = 0;
+
+        document.querySelector('.nexts').addEventListener('click', () => {
+            // 重置当前场景的样式
+            sections[currentIndex].classList.remove('active');
+            sections[currentIndex].style.transform = 'translateX(-100%)';
+
+            // 更新索引至下一个场景
+            currentIndex = (currentIndex + 1) % sections.length;
+
+            // 设置下一个场景的样式
+            sections[currentIndex].classList.add('active');
+            sections[currentIndex].style.transform = 'translateX(0)';
+
+            // 设置右边的小图显示
+            let nextIndex = (currentIndex + 1) % sections.length;
+            sections[nextIndex].style.transform = 'translateX(100%) scale(0.7)';
+            sections[nextIndex].style.opacity = '0.6';
+        });
+
+    }
 });
