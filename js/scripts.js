@@ -43,30 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const isPlaying = localStorage.getItem('musicPlaying') === 'true';
             const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
 
-            // 更精确的浏览器检测
-            const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
             try {
                 music.currentTime = savedTime;
-
                 if (isPlaying) {
-                    if (!isFirefox && !isMobile) {
-                        // Safari 需要特殊处理
-                        if (isSafari) {
-                            music.muted = true;  // 先静音
-                            await music.play();   // 尝试播放
-                            music.muted = false;  // 取消静音
-                        } else {
-                            // Chrome 直接播放
-                            await music.play();
-                        }
-                        musicIcon.src = 'images/musicstop.png';
-                    } else {
-                        // Firefox和移动设备显示播放按钮
-                        musicIcon.src = 'images/musicplay.png';
-                    }
+                    // 先尝试静音播放，再取消静音，提高自动播放成功率
+                    music.muted = true;
+                    await music.play();
+                    music.muted = false;
+                    musicIcon.src = 'images/musicstop.png';
                 } else {
                     music.pause();
                     musicIcon.src = 'images/musicplay.png';
