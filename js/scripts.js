@@ -150,8 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 初始化所有功能
         initializeEvents();
         initAudio();
-    }
-    else if (path.includes("homepage.html")) {
+    } else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
         const hoverright = document.getElementById("hover-right");
         const hoverleft = document.getElementById("hover-left");
@@ -256,9 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener('beforeunload', () => {
             localStorage.setItem('musicTime', music.currentTime);
         });
-    }
-
-    else if (path.includes("game.html")) {
+    } else if (path.includes("game.html")) {
 
         const audio = document.getElementById('game-bgm');
         const musicControlButton = document.getElementById('music-control2');
