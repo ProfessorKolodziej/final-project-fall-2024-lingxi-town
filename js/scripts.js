@@ -36,46 +36,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     else if (path.includes("introduction.html")) {
-        console.log("This is the Homepage.");
-        function navigate() {
-            window.location.href = 'homepage.html';
-        }
-        const ebutton = document.querySelector(".explorebutton");
-        ebutton.addEventListener("click", navigate);
+        // 音频初始化函数
+        async function initAudio() {
+            const music = document.getElementById('bgm-intro-home');
+            const musicIcon = document.getElementById('music-icon1');
+            const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
 
-        const music = document.getElementById('bgm-intro-home');
-        const musicControlButton = document.getElementById('music-control1');
-        const musicIcon = document.getElementById('music-icon1');
-        const isPlaying = localStorage.getItem('musicPlaying') === 'true';
-        const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
-
-        if (isPlaying) {
-            music.currentTime = savedTime;
-            music.play();
-            musicIcon.src = 'images/musicstop.png';
-        } else {
-            music.pause();
-            musicIcon.src = 'images/musicplay.png';
-        }
-
-
-        musicControlButton.addEventListener('click', () => {
-            if (music.paused) {
-                music.play();
-                musicIcon.src = 'images/musicstop.png';
-                localStorage.setItem('musicPlaying', 'true');
-            } else {
-                music.pause();
+            try {
+                music.currentTime = savedTime;
+                if (isPlaying) {
+                    // 先尝试静音播放，再取消静音，提高自动播放成功率
+                    music.muted = true;
+                    await music.play();
+                    music.muted = false;
+                    musicIcon.src = 'images/musicstop.png';
+                } else {
+                    music.pause();
+                    musicIcon.src = 'images/musicplay.png';
+                }
+            } catch (err) {
+                console.log('音频初始化失败:', err);
                 musicIcon.src = 'images/musicplay.png';
                 localStorage.setItem('musicPlaying', 'false');
             }
-        });
+        }
 
-        window.addEventListener('beforeunload', () => {
-            localStorage.setItem('musicTime', music.currentTime);
-        });
+        // 音乐控制函数
+        async function handleMusicControl() {
+            const music = document.getElementById('bgm-intro-home');
+            const musicIcon = document.getElementById('music-icon1');
 
+            try {
+                if (music.paused) {
+                    await music.play();
+                    musicIcon.src = 'images/musicstop.png';
+                    localStorage.setItem('musicPlaying', 'true');
+                } else {
+                    music.pause();
+                    musicIcon.src = 'images/musicplay.png';
+                    localStorage.setItem('musicPlaying', 'false');
+                }
+            } catch (err) {
+                console.log('播放控制失败:', err);
+            }
+        }
 
+        // 导航到主页
+        function navigate() {
+            window.location.href = 'homepage.html';
+        }
+
+        // 初始化所有事件监听
+        function initializeEvents() {
+            const ebutton = document.querySelector(".explorebutton");
+            const musicControlButton = document.getElementById('music-control1');
+            const music = document.getElementById('bgm-intro-home');
+
+            ebutton?.addEventListener("click", navigate);
+            musicControlButton?.addEventListener('click', handleMusicControl);
+            window.addEventListener('beforeunload', () => {
+                localStorage.setItem('musicTime', music.currentTime.toString());
+            });
+        }
+
+        // 初始化所有功能
+        initializeEvents();
+        initAudio();
     }
     else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
