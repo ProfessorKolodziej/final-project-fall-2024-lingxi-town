@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     else if (path.includes("introduction.html")) {
+        // 音频初始化函数
         async function initAudio() {
             const music = document.getElementById('bgm-intro-home');
             const musicIcon = document.getElementById('music-icon1');
@@ -50,57 +51,35 @@ document.addEventListener("DOMContentLoaded", () => {
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
             try {
+                // 设置保存的播放时间
                 music.currentTime = savedTime;
-                musicIcon.src = 'images/musicplay.png';
 
-                if (isPlaying) {
-                    if ((isChrome || isEdge) && !isMobile) {
-                        // Chrome和Edge桌面版：直接尝试播放
-                        try {
-                            await music.play();
-                            musicIcon.src = 'images/musicstop.png';
-                        } catch (err) {
-                            console.log('Chrome/Edge播放失败:', err);
-                            music.pause();
+                // 默认设置暂停和显示播放图标
+                musicIcon.src = 'images/musicplay.png';
+                music.pause();
+
+                // 只在桌面版Chrome或Edge尝试自动播放
+                if (isPlaying && (isChrome || isEdge) && !isMobile) {
+                    try {
+                        const playPromise = music.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                musicIcon.src = 'images/musicstop.png';
+                            }).catch(error => {
+                                console.log("自动播放失败:", error);
+                                music.pause();
+                                musicIcon.src = 'images/musicplay.png';
+                            });
                         }
-                    } else if (isSafari && !isMobile) {
-                        // Safari桌面版：尝试静音播放
-                        try {
-                            music.muted = true;
-                            const playPromise = music.play();
-                            if (playPromise !== undefined) {
-                                await playPromise;
-                                setTimeout(() => {
-                                    if (!music.paused) {
-                                        music.muted = false;
-                                        // 额外检查是否真的有声音播放
-                                        if (!music.muted && music.volume > 0) {
-                                            musicIcon.src = 'images/musicstop.png';
-                                        } else {
-                                            music.pause();
-                                            musicIcon.src = 'images/musicplay.png';
-                                        }
-                                    }
-                                }, 100);
-                            }
-                        } catch (err) {
-                            console.log('Safari静音播放失败:', err);
-                            music.pause();
-                            music.muted = false;
-                            musicIcon.src = 'images/musicplay.png';
-                        }
-                    } else {
-                        // Firefox和移动设备：显示播放按钮
+                    } catch (err) {
+                        console.log('尝试播放失败:', err);
                         music.pause();
                         musicIcon.src = 'images/musicplay.png';
                     }
-                } else {
-                    music.pause();
                 }
             } catch (err) {
                 console.log('音频初始化失败:', err);
                 music.pause();
-                music.muted = false;
                 musicIcon.src = 'images/musicplay.png';
                 localStorage.setItem('musicPlaying', 'false');
             }
@@ -150,7 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // 初始化所有功能
         initializeEvents();
         initAudio();
-    } else if (path.includes("homepage.html")) {
+    }
+
+    else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
         const hoverright = document.getElementById("hover-right");
         const hoverleft = document.getElementById("hover-left");
@@ -255,7 +236,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener('beforeunload', () => {
             localStorage.setItem('musicTime', music.currentTime);
         });
-    } else if (path.includes("game.html")) {
+    }
+
+    else if (path.includes("game.html")) {
 
         const audio = document.getElementById('game-bgm');
         const musicControlButton = document.getElementById('music-control2');
