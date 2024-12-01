@@ -47,39 +47,31 @@ document.addEventListener("DOMContentLoaded", () => {
             const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             const isEdge = /Edg/.test(navigator.userAgent);
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-            if (isFirefox || isMobile) {
-                musicIcon.src = 'images/musicplay.png';
-                music.pause();
-                return;
-            }
 
             try {
                 music.currentTime = savedTime;
-                // 默认显示播放按钮
-                musicIcon.src = 'images/musicplay.png';
 
-                if (isPlaying) {
-                    if ((isChrome || isEdge || isSafari) && !isMobile) {
-                        // 只在 Chrome 和 Edge 桌面版尝试自动播放
-                        try {
-                            await music.play();
-                            musicIcon.src = 'images/musicstop.png';
-                        } catch (err) {
-                            console.log('自动播放失败:', err);
-                            music.pause();
-                        }
-                    } else {
-                        // Safari、Firefox 和移动设备都先暂停
+                // 默认所有浏览器都设置为播放图标
+                musicIcon.src = 'images/musicplay.png';
+                music.pause();
+
+                // 只在桌面版Chrome和Edge尝试自动播放
+                if ((isChrome || isEdge) && !isMobile && isPlaying) {
+                    try {
+                        await music.play();
+                        musicIcon.src = 'images/musicstop.png';
+                    } catch (err) {
+                        console.log('自动播放失败:', err);
                         music.pause();
+                        musicIcon.src = 'images/musicplay.png';
                     }
-                } else {
-                    music.pause();
                 }
             } catch (err) {
                 console.log('音频初始化失败:', err);
                 music.pause();
+                musicIcon.src = 'images/musicplay.png';
                 localStorage.setItem('musicPlaying', 'false');
             }
         }
@@ -103,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log('播放控制失败:', err);
                 music.pause();
                 musicIcon.src = 'images/musicplay.png';
+                localStorage.setItem('musicPlaying', 'false');
             }
         }
 
