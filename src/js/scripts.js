@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // 浏览器检测
             const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             const isEdge = /Edg/.test(navigator.userAgent);
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
             if (isFirefox || isMobile) {
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 musicIcon.src = 'images/musicplay.png';
 
                 if (isPlaying) {
-                    if ((isChrome || isEdge) && !isMobile) {
+                    if ((isChrome || isEdge || isSafari) && !isMobile) {
                         // 只在 Chrome 和 Edge 桌面版尝试自动播放
                         try {
                             await music.play();
