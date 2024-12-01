@@ -487,9 +487,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (getId(1) != "" && getId(2) != "" && getId(3) != "" &&
                         getId(4) != "" && getId(5) != "" && getId(6) != "" &&
                         getId(7) != "" && getId(8) != "" && getId(9) != "") {
-                            allBox.forEach(box => {
-                                box.style.pointerEvents = 'none';
-                            });
+                        allBox.forEach(box => {
+                            box.style.pointerEvents = 'none';
+                        });
                         setTimeout(() => {
                             playBoard.classList.remove('show');
                             resultBox.classList.add('show');
