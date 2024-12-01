@@ -328,8 +328,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     playBoard.style.pointerEvents = 'auto';
                 }
             }
-            let playerXIcon = '../images/Chinese1.png';
-            let playerYIcon = '../images/Chinese2.png';
+            let playerXIcon = '/final-project-fall-2024-lingxi-town/images/Chinese1.png';
+            let playerYIcon = '/final-project-fall-2024-lingxi-town/images/Chinese2.png';
             let playerSign = 'X';
             let runBot = true;
 
