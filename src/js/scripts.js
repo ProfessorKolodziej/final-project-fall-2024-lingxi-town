@@ -48,6 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const isEdge = /Edg/.test(navigator.userAgent);
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+            if (isFirefox || isMobile) {
+                musicIcon.src = 'images/musicplay.png';
+                music.pause();
+                return;
+            }
+
             try {
                 music.currentTime = savedTime;
                 // 默认显示播放按钮
