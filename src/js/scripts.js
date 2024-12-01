@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     else if (path.includes("introduction.html")) {
-        // 音频初始化函数
         async function initAudio() {
             const music = document.getElementById('bgm-intro-home');
             const musicIcon = document.getElementById('music-icon1');
@@ -51,35 +50,45 @@ document.addEventListener("DOMContentLoaded", () => {
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
             try {
-                // 设置保存的播放时间
                 music.currentTime = savedTime;
 
-                // 默认设置暂停和显示播放图标
+                // 首先设置为播放图标
                 musicIcon.src = 'images/musicplay.png';
-                music.pause();
 
-                // 只在桌面版Chrome或Edge尝试自动播放
-                if (isPlaying && (isChrome || isEdge) && !isMobile) {
-                    try {
-                        const playPromise = music.play();
-                        if (playPromise !== undefined) {
-                            playPromise.then(() => {
-                                musicIcon.src = 'images/musicstop.png';
-                            }).catch(error => {
-                                console.log("自动播放失败:", error);
-                                music.pause();
-                                musicIcon.src = 'images/musicplay.png';
-                            });
+                if (isPlaying) {
+                    if ((isChrome || isEdge) && !isMobile) {
+                        // Chrome和Edge桌面版：直接尝试播放
+                        try {
+                            await music.play();
+                            musicIcon.src = 'images/musicstop.png';
+                        } catch (err) {
+                            console.log('Chrome/Edge播放失败:', err);
+                            music.pause();
                         }
-                    } catch (err) {
-                        console.log('尝试播放失败:', err);
+                    } else if (isSafari && !isMobile) {
+                        // Safari桌面版：尝试静音播放
+                        try {
+                            music.muted = true;
+                            await music.play();
+                            // 如果播放成功，取消静音
+                            music.muted = false;
+                            musicIcon.src = 'images/musicstop.png';
+                        } catch (err) {
+                            console.log('Safari静音播放失败:', err);
+                            music.pause();
+                            music.muted = false;
+                        }
+                    } else {
+                        // Firefox和移动设备：显示播放按钮
                         music.pause();
-                        musicIcon.src = 'images/musicplay.png';
                     }
+                } else {
+                    music.pause();
                 }
             } catch (err) {
                 console.log('音频初始化失败:', err);
                 music.pause();
+                music.muted = false;
                 musicIcon.src = 'images/musicplay.png';
                 localStorage.setItem('musicPlaying', 'false');
             }
@@ -130,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeEvents();
         initAudio();
     }
-
     else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
         const hoverright = document.getElementById("hover-right");
