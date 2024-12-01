@@ -43,20 +43,43 @@ document.addEventListener("DOMContentLoaded", () => {
             const isPlaying = localStorage.getItem('musicPlaying') === 'true';
             const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
 
+            // 浏览器检测
+            const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+            const isEdge = navigator.userAgent.indexOf("Edg") !== -1;
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
             try {
+                // 设置保存的播放时间
                 music.currentTime = savedTime;
-                if (isPlaying) {
-                    // 先尝试静音播放，再取消静音，提高自动播放成功率
-                    music.muted = true;
-                    await music.play();
-                    music.muted = false;
-                    musicIcon.src = 'images/musicstop.png';
-                } else {
-                    music.pause();
-                    musicIcon.src = 'images/musicplay.png';
+
+                // 默认设置暂停和显示播放图标
+                musicIcon.src = 'images/musicplay.png';
+                music.pause();
+
+                // 只在桌面版Chrome或Edge尝试自动播放
+                if (isPlaying && (isChrome || isEdge) && !isMobile) {
+                    try {
+                        const playPromise = music.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                musicIcon.src = 'images/musicstop.png';
+                            }).catch(error => {
+                                console.log("自动播放失败:", error);
+                                music.pause();
+                                musicIcon.src = 'images/musicplay.png';
+                            });
+                        }
+                    } catch (err) {
+                        console.log('尝试播放失败:', err);
+                        music.pause();
+                        musicIcon.src = 'images/musicplay.png';
+                    }
                 }
             } catch (err) {
                 console.log('音频初始化失败:', err);
+                music.pause();
                 musicIcon.src = 'images/musicplay.png';
                 localStorage.setItem('musicPlaying', 'false');
             }
@@ -79,6 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } catch (err) {
                 console.log('播放控制失败:', err);
+                music.pause();
+                musicIcon.src = 'images/musicplay.png';
+                localStorage.setItem('musicPlaying', 'false');
             }
         }
 
@@ -104,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeEvents();
         initAudio();
     }
+
     else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
         const hoverright = document.getElementById("hover-right");
