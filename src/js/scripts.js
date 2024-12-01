@@ -68,12 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else if (isSafari && !isMobile) {
                         // Safari桌面版：尝试静音播放
                         try {
+                            console.log(1);
                             music.muted = true;
                             await music.play();
                             // 如果播放成功，取消静音
                             music.muted = false;
                             musicIcon.src = 'images/musicstop.png';
                         } catch (err) {
+                            console.log(2);
                             console.log('Safari静音播放失败:', err);
                             music.pause();
                             music.muted = false;
