@@ -328,8 +328,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     playBoard.style.pointerEvents = 'auto';
                 }
             }
-            let playerXIcon = '../images/Chinese1.png';
-            let playerYIcon = '../images/Chinese2.png';
+            let playerXIcon = '/final-project-fall-2024-lingxi-town/images/Chinese1.png';
+            let playerYIcon = '/final-project-fall-2024-lingxi-town/images/Chinese2.png';
             let playerSign = 'X';
             let runBot = true;
 
@@ -413,8 +413,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 allBox[i].setAttribute('onclick', 'clickedBox(this)');
             }
 
-            let playerXIcon = '../images/Chinese1.png';
-            let playerYIcon = '../images/Chinese2.png';
+            let playerXIcon = '/final-project-fall-2024-lingxi-town/images/Chinese1.png';
+            let playerYIcon = '/final-project-fall-2024-lingxi-town/images/Chinese2.png';
             let playerSign = 'X';
             let runBot = false; // 双人模式不需要机器人
 
@@ -487,9 +487,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (getId(1) != "" && getId(2) != "" && getId(3) != "" &&
                         getId(4) != "" && getId(5) != "" && getId(6) != "" &&
                         getId(7) != "" && getId(8) != "" && getId(9) != "") {
-                            allBox.forEach(box => {
-                                box.style.pointerEvents = 'none';
-                            });
+                        allBox.forEach(box => {
+                            box.style.pointerEvents = 'none';
+                        });
                         setTimeout(() => {
                             playBoard.classList.remove('show');
                             resultBox.classList.add('show');

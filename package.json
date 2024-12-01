@@ -2,7 +2,7 @@
   "name": "student-site-boilerplate",
   "description": "A modern boilerplate for static website development, based on https://staticsiteboilerplate.com/",
   "version": "1.1.0",
-  "homepage": "https://github.com/ProfessorKolodziej/student-site-boilerplate",
+  "homepage": "https://professorkolodziej.github.io/final-project-fall-2024-lingxi-town",
   "author": {
     "name": "Ashley Kolodziej",
     "url": "https://ashleykolodziej.com/"
@@ -73,7 +73,12 @@
   "stylelint": {
     "extends": "stylelint-config-standard",
     "rules": {
-      "media-feature-range-notation": [ "context", { "severity": "warning" }]
+      "media-feature-range-notation": [
+        "context",
+        {
+          "severity": "warning"
+        }
+      ]
     }
   }
 }
