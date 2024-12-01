@@ -133,6 +133,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
     else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
+
+        // 音频初始化函数
+        async function initAudio() {
+            const music = document.getElementById('bgm-intro-home');
+            const musicIcon = document.getElementById('music-icon2');
+            const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+
+            // 浏览器检测
+            const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+            const isEdge = navigator.userAgent.indexOf("Edg") !== -1;
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            try {
+                music.currentTime = savedTime;
+
+                // 默认设置暂停和显示播放图标
+                musicIcon.src = 'images/musicplay.png';
+                music.pause();
+
+                // 只在桌面版Chrome或Edge尝试自动播放
+                if (isPlaying && (isChrome || isEdge) && !isMobile) {
+                    try {
+                        const playPromise = music.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                musicIcon.src = 'images/musicstop.png';
+                            }).catch(error => {
+                                console.log("自动播放失败:", error);
+                                music.pause();
+                                musicIcon.src = 'images/musicplay.png';
+                            });
+                        }
+                    } catch (err) {
+                        console.log('尝试播放失败:', err);
+                        music.pause();
+                        musicIcon.src = 'images/musicplay.png';
+                    }
+                }
+            } catch (err) {
+                console.log('音频初始化失败:', err);
+                music.pause();
+                musicIcon.src = 'images/musicplay.png';
+                localStorage.setItem('musicPlaying', 'false');
+            }
+        }
+
+        // 原有的 UI 元素
         const hoverright = document.getElementById("hover-right");
         const hoverleft = document.getElementById("hover-left");
         const coverright = document.querySelector(".leftcover");
@@ -140,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const comefw = document.querySelector('.mainhomepage');
         const musicfw = document.querySelector('#music-control2');
 
+        // 动画相关函数
         function addHoverEffect() {
             coverleft.style.transform = "translateX(20px)";
             coverright.style.transform = "translateX(-20px)";
@@ -150,7 +199,9 @@ document.addEventListener("DOMContentLoaded", () => {
             coverright.style.transform = "translateX(0)";
         }
 
-        function moveCovers() {
+        // 修改后的 moveCovers 函数，添加音乐播放
+        async function moveCovers() {
+            // 动画部分
             coverleft.style.transition = "transform 2s ease";
             coverright.style.transition = "transform 2s ease";
             hoverleft.style.transition = "transform 2s ease";
@@ -161,6 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
             hoverright.style.transform = "translateX(-680px)";
             hoverleft.style.transform = "translateX(680px)";
 
+            // 移除事件监听
             hoverright.removeEventListener("mouseenter", addHoverEffect);
             hoverleft.removeEventListener("mouseenter", addHoverEffect);
             hoverright.removeEventListener("mouseleave", removeHoverEffect);
@@ -168,74 +220,93 @@ document.addEventListener("DOMContentLoaded", () => {
             hoverright.removeEventListener("click", moveCovers);
             hoverleft.removeEventListener("click", moveCovers);
 
+            // 动画和音乐控制
             setTimeout(() => {
                 comefw.classList.add('comeforward');
                 musicfw.classList.add('comeforward');
             }, 1500);
+
+            // 对非Chrome/Edge浏览器，尝试播放音乐
+            const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+            const isEdge = navigator.userAgent.indexOf("Edg") !== -1;
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (!(isChrome || isEdge) || isMobile) {
+                const music = document.getElementById('bgm-intro-home');
+                const musicIcon = document.getElementById('music-icon2');
+                try {
+                    await music.play();
+                    musicIcon.src = 'images/musicstop.png';
+                    localStorage.setItem('musicPlaying', 'true');
+                } catch (err) {
+                    console.log('播放失败:', err);
+                }
+            }
         }
 
+        // 事件监听
         hoverright.addEventListener("mouseenter", addHoverEffect);
         hoverleft.addEventListener("mouseenter", addHoverEffect);
         hoverright.addEventListener("mouseleave", removeHoverEffect);
         hoverleft.addEventListener("mouseleave", removeHoverEffect);
-
-
         hoverright.addEventListener("click", moveCovers);
         hoverleft.addEventListener("click", moveCovers);
 
+        // 页面导航
         const scenclick = document.querySelector('.scenery');
         const petclick = document.querySelector('.pet');
         const citiclick = document.querySelector('.clickbs');
         const gameclick = document.querySelector('.children');
         const back = document.getElementById('back1');
 
-        scenclick.addEventListener('click', () => {
+        scenclick?.addEventListener('click', () => {
             window.location.href = "scenery.html";
-        })
-        petclick.addEventListener('click', () => {
+        });
+        petclick?.addEventListener('click', () => {
             window.location.href = "pet.html";
-        })
-        citiclick.addEventListener('click', () => {
+        });
+        citiclick?.addEventListener('click', () => {
             window.location.href = "towncitizen.html";
-        })
-        gameclick.addEventListener('click', () => {
+        });
+        gameclick?.addEventListener('click', () => {
             window.location.href = "game.html";
-        })
-        back.addEventListener('click', () => {
+        });
+        back?.addEventListener('click', () => {
             window.location.href = "introduction.html";
-        })
+        });
 
-        const music = document.getElementById('bgm-intro-home');
+        // 音乐控制按钮事件
         const musicControlButton = document.getElementById('music-control2');
-        const musicIcon = document.getElementById('music-icon2');
-        const isPlaying = localStorage.getItem('musicPlaying') === 'true';
-        const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+        musicControlButton?.addEventListener('click', async () => {
+            const music = document.getElementById('bgm-intro-home');
+            const musicIcon = document.getElementById('music-icon2');
 
-        if (isPlaying) {
-            music.currentTime = savedTime;
-            music.play();
-            musicIcon.src = 'images/musicstop.png';
-        } else {
-            music.pause();
-            musicIcon.src = 'images/musicplay.png';
-        }
-
-
-        musicControlButton.addEventListener('click', () => {
-            if (music.paused) {
-                music.play();
-                musicIcon.src = 'images/musicstop.png';
-                localStorage.setItem('musicPlaying', 'true');
-            } else {
+            try {
+                if (music.paused) {
+                    await music.play();
+                    musicIcon.src = 'images/musicstop.png';
+                    localStorage.setItem('musicPlaying', 'true');
+                } else {
+                    music.pause();
+                    musicIcon.src = 'images/musicplay.png';
+                    localStorage.setItem('musicPlaying', 'false');
+                }
+            } catch (err) {
+                console.log('播放控制失败:', err);
                 music.pause();
                 musicIcon.src = 'images/musicplay.png';
                 localStorage.setItem('musicPlaying', 'false');
             }
         });
 
+        // 保存播放时间
         window.addEventListener('beforeunload', () => {
-            localStorage.setItem('musicTime', music.currentTime);
+            const music = document.getElementById('bgm-intro-home');
+            localStorage.setItem('musicTime', music.currentTime.toString());
         });
+
+        // 初始化音频
+        initAudio();
     }
 
     else if (path.includes("game.html")) {
