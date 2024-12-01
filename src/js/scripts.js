@@ -310,19 +310,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     else if (path.includes("game.html")) {
+        const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+        const isEdge = navigator.userAgent.indexOf("Edg") !== -1;
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isAutoPlayBrowser = (isChrome || isEdge) && !isMobile;
 
         const audio = document.getElementById('game-bgm');
         const musicControlButton = document.getElementById('music-control2');
         const musicIcon = document.getElementById('music-icon2');
 
         const lastTime = localStorage.getItem('audioCurrentTime');
-        if (lastTime) {
-            audio.currentTime = lastTime;
-            audio.play();
-            musicIcon.src = 'images/musicplay.png';
+        if (isAutoPlayBrowser) {
+            if (lastTime) {
+                audio.currentTime = lastTime;
+                audio.play();
+                musicIcon.src = 'images/musicplay.png';
+            } else {
+                audio.currentTime = 0;
+                audio.play();
+                musicIcon.src = 'images/musicplay.png';
+            }
         } else {
-            audio.currentTime = 0;
-            audio.play();
+            // 非Chrome/Edge：初始化时间但不自动播放
+            audio.currentTime = lastTime || 0;
             musicIcon.src = 'images/musicplay.png';
         }
 
@@ -370,6 +380,11 @@ document.addEventListener("DOMContentLoaded", () => {
             replayBtn = resultBox.querySelector('button');
             const backgame = document.querySelector('.gameback');
             const homepagegame2 = document.querySelector('.gamehome2');
+
+            if (!isAutoPlayBrowser && audio.paused) {
+                audio.play();
+            }
+
 
             homepagegame2.onclick = () => {
                 window.location.href = "homepage.html";
@@ -477,7 +492,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         playBoard.classList.remove('show');
                         resultBox.classList.add('show');
                     }, 1000);
-                    wonText.innerHTML = `Player <p>${playerSign}</p> won the game!`;
+                    wonText.innerHTML = `Player  <p> ${playerSign} </p>  won the game!`;
                 } else {
                     if (getId(1) != "" && getId(2) != "" && getId(3) != "" && getId(4) != "" && getId(5) != "" && getId(6) != "" && getId(7) != "" && getId(8) != "" && getId(9) != "") {
                         console.log(playerSign + ' ' + 'winner');
@@ -513,6 +528,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const backgame1 = document.querySelector('.gameback');
             const backgame = document.querySelector('.gameback2');
             const homepagegame2 = document.querySelector('.gamehome2');
+            const title1 = document.querySelector('.gametitle');
+            const title3 = document.querySelector('.gametitle3');
+
+            if (!isAutoPlayBrowser && audio.paused) {
+                audio.play();
+            }
 
             homepagegame2.onclick = () => {
                 window.location.href = "homepage.html";
@@ -523,6 +544,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // 隐藏模式选择界面，显示角色选择界面
+            title1.classList.add("hide");
             backgame1.classList.add('hide');
             selectXBtn1.classList.add('hide');
             selectYBtn1.classList.add('hide');
@@ -531,6 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
             selectXBtn.classList.add('show');
             selectYBtn.classList.add('show');
             backgame.classList.add('show');
+            title3.classList.add("show");
 
 
             // 为所有格子添加点击事件
@@ -606,7 +629,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         playBoard.classList.remove('show');
                         resultBox.classList.add('show');
                     }, 700);
-                    wonText.innerHTML = `Player <p>${playerSign}</p> won the game!`;
+                    wonText.innerHTML = `Player <p> ${playerSign} </p>  won the game!`;
                 } else {
                     // 检查是否平局
                     if (getId(1) != "" && getId(2) != "" && getId(3) != "" &&

@@ -461,6 +461,13 @@ to help you out.
 	margin-top: 5px;
 }
 
+.gametitle.hide {
+	opacity: 0;
+}
+
+.gametitle3.show {
+	opacity: 1;
+}
 
 .goptions {
 	display: flex;
@@ -773,6 +780,12 @@ to help you out.
 	opacity: 0;
 	pointer-events: none;
 	transform: translate(-50%, -50%) scale(0.9);
+	display: flex;
+	/* 添加 */
+	flex-direction: column;
+	/* 添加 */
+	align-items: center;
+	/* 添加 */
 }
 
 .result-box.show {
@@ -782,30 +795,36 @@ to help you out.
 	transform: translate(-50%, -50%) scale(1);
 }
 
-
 .result-box .won-text {
 	font-size: 35px;
+	word-spacing: 0.5em;
 	border-bottom: 1px solid #ccc;
 	padding: 10px;
-	font-weight: 500;
+	font-weight: 700;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
+	/* 添加 */
 }
 
-.result-box .won-text p {
-	font-weight: 700;
-	margin: 0 10px;
+.result-box .btn {
+	display: flex;
+	margin-top: 20px;
+	justify-content: center;
+	/* 修改 */
+	width: 100%;
+	/* 添加 */
 }
 
 .gamehome2 {
-	display: flex;
-	margin-top: 20px;
-	justify-self: center;
+	display: block;
+	/* 修改 */
+	margin: 20px auto 0;
+	/* 修改 */
 	font-size: 22px;
 	font-weight: 500;
 	padding: 10px;
-	margin: 20px 0 0 0;
 	border: none;
 	outline: none;
 	background-image: url(../images/homepage-bg.png);
@@ -813,12 +832,6 @@ to help you out.
 	border-radius: 10px;
 	color: black;
 	cursor: pointer;
-}
-
-.result-box .btn {
-	display: flex;
-	margin-top: 20px;
-	justify-self: center;
 }
 
 .result-box .btn button {
