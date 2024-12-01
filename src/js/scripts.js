@@ -44,26 +44,35 @@ document.addEventListener("DOMContentLoaded", () => {
             const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
 
             // 浏览器检测
-            const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-            const isEdge = /Edg/.test(navigator.userAgent);
+            const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+            const isEdge = navigator.userAgent.indexOf("Edg") !== -1;
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
             try {
+                // 设置保存的播放时间
                 music.currentTime = savedTime;
 
-                // 默认所有浏览器都设置为播放图标
+                // 默认设置暂停和显示播放图标
                 musicIcon.src = 'images/musicplay.png';
                 music.pause();
 
-                // 只在桌面版Chrome和Edge尝试自动播放
-                if ((isChrome || isEdge) && !isMobile && isPlaying) {
+                // 只在桌面版Chrome或Edge尝试自动播放
+                if (isPlaying && (isChrome || isEdge) && !isMobile) {
                     try {
-                        await music.play();
-                        musicIcon.src = 'images/musicstop.png';
+                        const playPromise = music.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                musicIcon.src = 'images/musicstop.png';
+                            }).catch(error => {
+                                console.log("自动播放失败:", error);
+                                music.pause();
+                                musicIcon.src = 'images/musicplay.png';
+                            });
+                        }
                     } catch (err) {
-                        console.log('自动播放失败:', err);
+                        console.log('尝试播放失败:', err);
                         music.pause();
                         musicIcon.src = 'images/musicplay.png';
                     }
@@ -121,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeEvents();
         initAudio();
     }
+
     else if (path.includes("homepage.html")) {
         console.log("This is the Homepage.");
         const hoverright = document.getElementById("hover-right");
