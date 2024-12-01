@@ -42,15 +42,44 @@ document.addEventListener("DOMContentLoaded", () => {
             const musicIcon = document.getElementById('music-icon1');
             const isPlaying = localStorage.getItem('musicPlaying') === 'true';
             const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
 
             try {
                 music.currentTime = savedTime;
+
                 if (isPlaying) {
-                    // 先尝试静音播放，再取消静音，提高自动播放成功率
-                    music.muted = true;
-                    await music.play();
-                    music.muted = false;
-                    musicIcon.src = 'images/musicstop.png';
+                    if (isMobile) {
+                        // 移动设备：需要用户交互才能播放
+                        document.addEventListener('touchstart', async () => {
+                            try {
+                                await music.play();
+                                musicIcon.src = 'images/musicstop.png';
+                            } catch (err) {
+                                console.log('移动设备播放失败:', err);
+                                musicIcon.src = 'images/musicplay.png';
+                            }
+                        }, { once: true });
+                    } else if (isFirefox) {
+                        // 火狐浏览器特殊处理：等待加载完成
+                        await new Promise(resolve => {
+                            music.addEventListener('loadeddata', async () => {
+                                try {
+                                    await music.play();
+                                    musicIcon.src = 'images/musicstop.png';
+                                    resolve();
+                                } catch (err) {
+                                    console.log('Firefox播放失败:', err);
+                                    musicIcon.src = 'images/musicplay.png';
+                                    resolve();
+                                }
+                            }, { once: true });
+                        });
+                    } else {
+                        // 其他桌面浏览器正常处理
+                        await music.play();
+                        musicIcon.src = 'images/musicstop.png';
+                    }
                 } else {
                     music.pause();
                     musicIcon.src = 'images/musicplay.png';
