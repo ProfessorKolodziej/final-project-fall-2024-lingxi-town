@@ -44,50 +44,35 @@ document.addEventListener("DOMContentLoaded", () => {
             const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
 
             // 浏览器检测
-            const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+            const isEdge = /Edg/.test(navigator.userAgent);
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
             try {
                 music.currentTime = savedTime;
+                // 默认显示播放按钮
+                musicIcon.src = 'images/musicplay.png';
 
                 if (isPlaying) {
-                    if (!isFirefox && !isMobile) {
-                        // 桌面版Chrome、Edge、Safari尝试自动播放
+                    if ((isChrome || isEdge) && !isMobile) {
+                        // 只在 Chrome 和 Edge 桌面版尝试自动播放
                         try {
-                            if (isSafari) {
-                                // Safari特殊处理
-                                await music.play().then(() => {
-                                    musicIcon.src = 'images/musicstop.png';
-                                }).catch(() => {
-                                    // 如果直接播放失败，尝试静音播放
-                                    music.muted = true;
-                                    return music.play().then(() => {
-                                        music.muted = false;
-                                        musicIcon.src = 'images/musicstop.png';
-                                    });
-                                });
-                            } else {
-                                // Chrome和Edge
-                                await music.play();
-                                musicIcon.src = 'images/musicstop.png';
-                            }
+                            await music.play();
+                            musicIcon.src = 'images/musicstop.png';
                         } catch (err) {
                             console.log('自动播放失败:', err);
-                            musicIcon.src = 'images/musicplay.png';
+                            music.pause();
                         }
                     } else {
-                        // Firefox和移动设备手动播放
+                        // Safari、Firefox 和移动设备都先暂停
                         music.pause();
-                        musicIcon.src = 'images/musicplay.png';
                     }
                 } else {
                     music.pause();
-                    musicIcon.src = 'images/musicplay.png';
                 }
             } catch (err) {
                 console.log('音频初始化失败:', err);
-                musicIcon.src = 'images/musicplay.png';
+                music.pause();
                 localStorage.setItem('musicPlaying', 'false');
             }
         }
@@ -96,8 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         async function handleMusicControl() {
             const music = document.getElementById('bgm-intro-home');
             const musicIcon = document.getElementById('music-icon1');
-            const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
             try {
                 if (music.paused) {
@@ -111,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } catch (err) {
                 console.log('播放控制失败:', err);
+                music.pause();
                 musicIcon.src = 'images/musicplay.png';
             }
         }
