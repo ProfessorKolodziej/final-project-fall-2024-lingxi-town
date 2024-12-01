@@ -1,0 +1,1294 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jaini+Purva&family=Julee&family=Protest+Revolution&display=swap');
+
+/*
+CSS controls the styling of the page.
+You can write a color in directly, or use variables.
+Try changing the color from blue to red in the
+primary color variable below.
+*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--color-primary: blue;
+	--color-secondary: #c00;
+}
+
+/*
+CSS doesn't allow variables to be used in media
+queries just yet, but you can use these values
+to help you out.
+
+	--size-xs: 320px;
+	--size-sm: 480px;
+	--size-md: 768px;
+	--size-lg: 1024px;
+	--size-xl: 1200px;
+*/
+
+.intro {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 100vw;
+	min-height: 100vh;
+}
+
+.lingxi {
+	opacity: 1;
+	transition: opacity 1s ease;
+}
+
+.lingxi.fade {
+	opacity: 0;
+}
+
+.lingxi {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.content-container {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: relative;
+}
+
+.bg-circle {
+	width: 500px;
+	aspect-ratio: 1/1;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.loadingbarcontainer {
+	width: 60%;
+	position: absolute;
+	top: calc(30% + 350px);
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.loadingbar {
+	width: 100%;
+	height: 60px;
+	position: relative;
+	z-index: 2;
+}
+
+.rolling-ball {
+	width: 80px;
+	position: absolute;
+	top: -38px;
+	left: 0;
+	z-index: 1;
+}
+
+.introduction-container {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+	width: 100%;
+}
+
+.intro-title {
+	font-family: "Julee", cursive;
+	font-size: 50px;
+	margin: 0;
+	text-align: center;
+	letter-spacing: 0.1em;
+	position: absolute;
+	top: 40px;
+	z-index: 10;
+}
+
+.intro-wrapper {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	position: absolute;
+	top: 100px;
+}
+
+.intro-bg {
+	width: 100%;
+	aspect-ratio: 1 / 0.95;
+	max-width: 600px;
+}
+
+.intro-content {
+	position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	width: 55%;
+	max-width: 500px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.intro-content p {
+	font-family: "Jaini Purva", system-ui;
+	font-size: 22px;
+	margin: 10px 0;
+	line-height: 30px;
+}
+
+.explorebutton {
+	padding: 10px 15px;
+	font-family: "Jaini Purva", system-ui;
+	font-size: 25px;
+	background-image: url(../images/homepage.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: none;
+	width: 300px;
+	height: 80px;
+	position: absolute;
+	top: 630px;
+	transition: transform 0.3s ease, font-size 0.3s ease;
+	padding-bottom: 25px;
+	background-color: transparent;
+}
+
+.explorebutton:hover {
+	transform: scale(1.1);
+	color: #fff;
+}
+
+.music-control1 {
+	position: absolute;
+	top: 2.5%;
+	right: 2.5%;
+	width: 45px;
+	height: 45px;
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.music-icon1 {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.music-icon1:hover {
+	transform: scale(1.1);
+}
+
+.homepage {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+}
+
+.homepage-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/homepage-bg1.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+	width: 100%;
+}
+
+.cover {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	z-index: 100;
+}
+
+.leftcover,
+.rightcover {
+	width: 50vw;
+	height: auto;
+	max-height: 100vh;
+	transition: transform 0.5s ease;
+}
+
+.hover-left,
+.hover-right {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 150px;
+	cursor: pointer;
+}
+
+.hover-left {
+	left: 50%;
+	transform: translateX(-100%);
+	z-index: 10;
+}
+
+.hover-right {
+	right: 50%;
+	transform: translateX(100%);
+	z-index: 10;
+}
+
+.mainhomepage {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+}
+
+.scenery {
+	position: absolute;
+	top: 20%;
+	right: 5%;
+	width: 18%;
+	height: 65%;
+	transition: 0.5s ease;
+}
+
+.pet {
+	position: absolute;
+	top: 20%;
+	left: 7%;
+	width: 18%;
+	height: 65%;
+	transition: 0.5s ease;
+}
+
+
+.nonbs {
+	position: absolute;
+	bottom: -3%;
+	right: 49.5%;
+	transform: translateX(50%);
+	width: 100%;
+	height: 100%;
+	z-index: -20;
+}
+
+.clickbs {
+	position: absolute;
+	top: 35%;
+	right: 40%;
+	width: 18%;
+	height: 33%;
+	cursor: pointer;
+	z-index: -10;
+	transition: 0.5s ease;
+}
+
+.children {
+	position: absolute;
+	bottom: 0;
+	right: 25%;
+	width: 25%;
+	height: auto;
+	z-index: -5;
+	transition: 0.5s ease;
+}
+
+.comeforward {
+	z-index: 100;
+}
+
+.pet:hover,
+.scenery:hover,
+.children:hover,
+.clickbs:hover {
+	transform: scale(1.1);
+}
+
+
+.music-control2 {
+	position: absolute;
+	top: 1.5%;
+	right: 3.5%;
+	width: 50px;
+	height: 50px;
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.music-icon2,
+.back-icon1 {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.music-icon2:hover {
+	transform: scale(0.9);
+}
+
+
+.back1 {
+	background-image: url(../images/homepage2.png);
+	font-family: "Jaini Purva", system-ui;
+	font-size: 22px;
+	color: white;
+	margin: 10px;
+	padding: 5px;
+	height: 15px;
+	letter-spacing: 0.1em;
+	top: 3%;
+	left: 1.5%;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	width: 100px;
+	position: absolute;
+	border: none;
+	padding-bottom: 40px;
+	padding-left: 28px;
+	text-align: left;
+	transform: translate(0, -50%);
+}
+
+.back1:hover {
+	color: black;
+}
+
+.gamepage {
+	font-family: "Jaini Purva", system-ui;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-image: url(../images/game.png);
+	width: 100vw;
+	height: 100vh;
+	background-size: 100% 100%;
+}
+
+.gamepage button {
+	font-family: "Jaini Purva", system-ui;
+}
+
+.people,
+.gamecontent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.select-box,
+.play-board,
+.result-box,
+.play-mode {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.3s ease;
+}
+
+.select-box,
+.play-mode {
+	background: #fff;
+	padding: 20px 25px 25px;
+	border-radius: 10px;
+	width: 50%;
+}
+
+.select-box.hide,
+.play-mode.hide {
+	opacity: 0;
+	pointer-events: none;
+	transform: translate(-50%, -50%) scale(0.9);
+}
+
+.select-box {
+	opacity: 0;
+	pointer-events: none;
+	transform: translate(-50%, -50%) scale(0.9);
+}
+
+.select-box.show {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+
+.select-box h1,
+.play-mode h1 {
+	font-size: 45px;
+	word-spacing: 0.2em;
+	font-weight: 600;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.gametitle,
+.gametitle2,
+.gametitle3 {
+	font-size: 28px;
+	word-spacing: 0.2em;
+	font-weight: 500;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+
+.goptions {
+	display: flex;
+	width: 100%;
+	margin: 10px 0 20px 0;
+}
+
+.goptions button {
+	width: 100%;
+	font-size: 22px;
+	font-weight: 700;
+	padding: 8px 0;
+	margin: 0 10px;
+	border: none;
+	outline: none;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	border-radius: 10px;
+	color: black;
+	cursor: pointer;
+}
+
+.gameback,
+.gamehome,
+.gameback2 {
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 22px;
+	font-weight: 700;
+	padding: 10px 0;
+	margin: 5px 0;
+	border: none;
+	outline: none;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	border-radius: 10px;
+	color: black;
+	cursor: pointer;
+}
+
+.goptions button:hover,
+.result-box .btn button:hover,
+.gamehome:hover,
+.gamehome2:hover {
+	transform: scale(0.96)
+}
+
+.gameback {
+	width: 150px;
+	margin-top: 10px 0;
+}
+
+.gameback:hover {
+	transform: scale(1.1);
+}
+
+.gamecontent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	transition: all 0.3s ease;
+}
+
+.playerX,
+.playerY {
+	position: relative;
+	font-size: 22px;
+	padding: 5px 20px;
+	margin: 5px 0;
+	border: 2px solid transparent;
+	color: black;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	transition: all 0.3s ease;
+	width: 150px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.playerX .explain,
+.playerY .explain {
+	position: relative;
+	font-family: "Cormorant Garamond", serif;
+	font-size: 16px;
+	left: 0;
+	transform: none;
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.playerX:hover,
+.playerY:hover {
+	width: 90%;
+}
+
+.playerX:hover .explain,
+.playerY:hover .explain {
+	max-height: 300px;
+	opacity: 1;
+	padding: 10px;
+}
+
+.explain .exim {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+	margin-bottom: 10px;
+}
+
+.playerX2,
+.playerY2,
+.gametitle3,
+.gameback2 {
+	display: none;
+	pointer-events: none;
+}
+
+.playerX.hide,
+.playerY.hide,
+.gametitle.hide,
+.gameback.hide {
+	display: none;
+	pointer-events: none;
+}
+
+.playerX2.show,
+.playerY2.show,
+.gametitle3.show,
+.gameback2.show {
+	display: block;
+	pointer-events: auto;
+}
+
+.playerX2,
+.playerY2 {
+	position: relative;
+	padding: 5px 20px;
+	margin: 0 0;
+	border: 2px solid transparent;
+	color: black;
+	font-size: 22px;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	transition: all 0.3s ease;
+	width: 60%;
+	text-align: center;
+	overflow: hidden;
+}
+
+.playerX2 .explain2,
+.playerY2 .explain2 {
+	position: relative;
+	left: 0;
+	font-family: "Cormorant Garamond", serif;
+	font-size: 18px;
+	transform: none;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.explain2 .exim2 {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+	margin-bottom: 10px;
+}
+
+.playerX2:hover,
+.playerY2:hover {
+	transform: scale(0.9);
+}
+
+.gameback2:hover {
+	transform: scale(0.85);
+}
+
+.play-board {
+	width: 30%;
+	opacity: 0;
+	pointer-events: none;
+	transform: translate(-50%, -50%) scale(0.9);
+}
+
+.play-board.show {
+	width: 30%;
+	opacity: 1;
+	pointer-events: auto;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.play-board .details {
+	background: #fff;
+	padding: 7px;
+	border-radius: 10px;
+	margin: 10px;
+}
+
+.play-board .play-area {
+	margin-top: 20px;
+}
+
+
+.play-board .details .players {
+	display: flex;
+	width: 100%;
+	position: relative;
+	justify-content: space-between;
+}
+
+.play-board .details span {
+	color: black;
+	width: 100%;
+	margin: 10px;
+	padding: 7px 0;
+	cursor: default;
+	font-size: 25px;
+	text-align: center;
+	border-radius: 5px;
+	position: relative;
+	z-index: 5;
+	transition: all 0.3s ease;
+}
+
+
+
+.details span:first-child {
+	color: #fff;
+}
+
+.play-board section span img {
+	width: 70%;
+	height: 70%;
+	object-fit: contain;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.details .slider {
+	position: absolute;
+	top: 0;
+	left: 0%;
+	height: 100%;
+	width: 50%;
+	background-image: url(../images/homepage-bg.png);
+	border-radius: 5px;
+	z-index: 2;
+	transition: all 0.3s ease;
+}
+
+.players.active span:first-child {
+	color: black;
+}
+
+.players.active span:nth-child(2) {
+	color: #fff;
+}
+
+.players.active .slider {
+	left: 50%;
+}
+
+.play-board section {
+	display: flex;
+}
+
+.play-board section span {
+	display: block;
+	width: 30%;
+	aspect-ratio: 1/1;
+	margin: 5px;
+	background: #fff;
+	border-radius: 5px;
+	font-size: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.result-box {
+	background: #fff;
+	min-width: 400px;
+	padding: 20px;
+	border-radius: 5px;
+	width: 50%;
+	opacity: 0;
+	pointer-events: none;
+	transform: translate(-50%, -50%) scale(0.9);
+}
+
+.result-box.show {
+	width: 30%;
+	opacity: 1;
+	pointer-events: auto;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+
+.result-box .won-text {
+	font-size: 35px;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+	font-weight: 500;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.result-box .won-text p {
+	font-weight: 700;
+	margin: 0 10px;
+}
+
+.gamehome2 {
+	display: flex;
+	margin-top: 20px;
+	justify-self: center;
+	font-size: 22px;
+	font-weight: 500;
+	padding: 10px;
+	margin: 20px 0 0 0;
+	border: none;
+	outline: none;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	border-radius: 10px;
+	color: black;
+	cursor: pointer;
+}
+
+.result-box .btn {
+	display: flex;
+	margin-top: 20px;
+	justify-self: center;
+}
+
+.result-box .btn button {
+	font-size: 22px;
+	font-weight: 500;
+	padding: 10px;
+	margin: 0 10px;
+	border: none;
+	outline: none;
+	background-image: url(../images/homepage-bg.png);
+	background-size: 100% 100%;
+	border-radius: 10px;
+	color: black;
+	cursor: pointer;
+}
+
+
+.scenerypage2 {
+	background: #eaeaea;
+}
+
+.container-s2 {
+	position: absolute;
+	overflow: hidden;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100vw;
+	height: 100vh;
+	background: #f5f5f5;
+	box-shadow: 0 30px 50px #dbdbdb;
+}
+
+.container-s2 .slides2 .items {
+	width: 300px;
+	height: 80%;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	border-radius: 20px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.282);
+	background-size: cover;
+	background-position: 50% 50%;
+	display: inline-block;
+	transition: 0.5s;
+}
+
+.slides2 .items:nth-child(1),
+.slides2 .items:nth-child(2) {
+	top: 0;
+	left: 0;
+	transform: translate(0, 0);
+	border-radius: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.slides2 .items:nth-child(3) {
+	left: 95%;
+	z-index: 1111;
+}
+
+.slides2 .items:nth-child(4) {
+	left: 95%;
+	z-index: 999;
+}
+
+.slides2 .items:nth-child(5) {
+	left: 95%;
+	z-index: 888;
+}
+
+.slides2 .items:nth-child(6) {
+	left: 95%;
+	z-index: 777;
+}
+
+.items .contents {
+	position: absolute;
+	top: 50%;
+	left: 2%;
+	width: 400px;
+	text-align: left;
+	color: black;
+	transform: translate(0, -50%);
+	display: none;
+}
+
+.slides2 .items:nth-child(2) .contents,
+.slides2 .items:nth-child(2) .scenehome,
+.slides2 .items:nth-child(2) .text-background {
+	display: block;
+}
+
+.contents .names {
+	font-size: 35px;
+	font-family: "Jaini Purva", system-ui;
+	font-style: oblique;
+	word-spacing: 0.5em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	text-shadow: 2px 2px 4px #000000;
+	font-weight: bold;
+	opacity: 0;
+	animation: animate 1s ease-in-out 1 forwards;
+}
+
+.text-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 40%;
+	background: linear-gradient(to right,
+			rgba(255, 255, 255, 0.8) 0%,
+			rgba(255, 255, 255, 0.5) 70%,
+			rgba(255, 255, 255, 0) 100%);
+	z-index: -1111;
+	display: none;
+}
+
+#i1 .contents,
+#i4 .contents,
+#i6 .contents {
+	color: rgb(226, 224, 224);
+}
+
+
+#i2 .contents {
+	color: black;
+}
+
+#i2 .contents .des,
+#i2 .contents .names {
+	text-shadow: 2px 2px 4px #dbefb77f;
+}
+
+#i3 .contents .des,
+#i3 .contents .names {
+	text-shadow: 2px 2px 4px #bf731cb3;
+}
+
+#i5 .contents {
+	width: 500px;
+	color: rgb(246, 222, 134);
+}
+
+#i5 .contents .des {
+	width: 400px;
+}
+
+#i3 .contents .des {
+	width: 350px;
+}
+
+#i3 .contents {
+	color: rgb(249, 202, 101);
+}
+
+.contents .des {
+	line-height: 22px;
+	font-family: "Cormorant Garamond", serif;
+	font-style: bold;
+	font-weight: 500;
+	text-shadow: 2px 2px 4px #000000;
+	letter-spacing: 0.1em;
+	font-size: 20px;
+	margin-top: 0;
+	margin-bottom: 20px;
+	opacity: 0;
+	animation: animate 1s 0.3s ease-in-out 1 forwards;
+}
+
+
+@keyframes animate {
+	from {
+		opacity: 0;
+		transform: translate(0, 100px);
+		filter: blur(33px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0);
+		filter: blur(0);
+	}
+}
+
+.btn2 {
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 25px;
+}
+
+.btn2 button {
+	font-size: 25px;
+	font-family: "Jaini Purva", system-ui;
+	width: 70px;
+	height: 40px;
+	font-style: normal;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 8px;
+	border: none;
+	margin: 6px;
+	cursor: pointer;
+}
+
+.btn2 button:hover {
+	transform: scale(1.1);
+}
+
+#i1 {
+	background-image: url('../images/scene_01.png');
+}
+
+#i2 {
+	background-image: url('../images/scene_05.png');
+}
+
+#i3 {
+	background-image: url('../images/scene_00.png');
+}
+
+#i4 {
+	background-image: url('../images/scene_03.png');
+}
+
+#i5 {
+	background-image: url('../images/scene_02.png');
+}
+
+#i6 {
+	background-image: url('../images/scene_04.png');
+}
+
+.scenehome {
+	font-family: "Jaini Purva", system-ui;
+	font-size: 20px;
+	color: black;
+	margin: 10px;
+	padding: 5px;
+	height: 35px;
+	letter-spacing: 0.05em;
+	top: 3%;
+	left: 0.5%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	width: 150px;
+	position: absolute;
+	border: none;
+	padding-bottom: 40px;
+	padding-left: 35px;
+	text-align: left;
+	transform: translate(0, -50%);
+	display: none;
+}
+
+.scenehome:hover {
+	color: white;
+}
+
+#sh1 {
+	background-image: url(../images/homepagespring.png);
+}
+
+#sh2 {
+	background-image: url(../images/homepagesummer.png);
+}
+
+#sh3 {
+	background-image: url(../images/homepagefall.png);
+}
+
+#sh4 {
+	background-image: url(../images/homepagewinter.png);
+}
+
+#sh5 {
+	background-image: url(../images/homepagenight.png);
+}
+
+#sh6 {
+	background-image: url(../images/homepagerain.png);
+}
+
+.character-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: clamp(10px, 1vw, 15px);
+	padding: clamp(10px, 1vw, 15px);
+	width: 100%;
+	height: 100vh;
+	flex-wrap: nowrap;
+	overflow-x: hidden;
+	background-image: url(../images/peoplebackground.png);
+	background-size: 100% 100%;
+	position: relative;
+}
+
+.character-card {
+	flex: 0 1 clamp(180px, 15vw, 200px);
+	position: relative;
+	transition: all 0.5s ease;
+	height: 400px;
+}
+
+.card-normal {
+	background: rgba(178, 226, 248, 0.8);
+	padding: 15px;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+	transition: all 0.5s ease;
+	height: 100%;
+	justify-content: center;
+}
+
+.character-icon {
+	width: clamp(100px, 10vw, 120px);
+	height: clamp(180px, 20vw, 240px);
+	object-fit: contain;
+}
+
+.character-name {
+	margin-top: 15px;
+	font-size: clamp(16px, 1.8vw, 20px);
+}
+
+.card-detail {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.5s ease;
+	width: clamp(400px, 40vw, 600px);
+	z-index: 1;
+}
+
+.detail-content {
+	background: rgba(178, 226, 248, 0.8);
+	border-radius: 20px;
+	padding: 20px;
+	display: flex;
+	gap: 20px;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+	height: 400px;
+}
+
+.character-full {
+	width: clamp(150px, 15vw, 180px);
+	height: 100%;
+	object-fit: contain;
+}
+
+.character-text {
+	flex: 1;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.character-text h3 {
+	margin-bottom: 15px;
+	font-size: clamp(20px, 2.2vw, 26px);
+	text-align: center;
+}
+
+.character-text p {
+	line-height: 1.8;
+	font-size: clamp(14px, 1.6vw, 18px);
+	text-align: justify;
+}
+
+.character-container:has(.character-card:hover) .character-card:not(:hover) {
+	flex-basis: clamp(80px, 8vw, 100px);
+}
+
+
+.character-card:hover {
+	flex-basis: clamp(400px, 50vw, 600px);
+	z-index: 2;
+}
+
+.character-card:hover .card-normal {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.character-card:hover .card-detail {
+	opacity: 1;
+	visibility: visible;
+}
+
+.character-card:first-child .card-detail {
+	left: 0;
+	transform: translate(0, -50%);
+}
+
+.character-card:last-child .card-detail {
+	left: auto;
+	right: 0;
+	transform: translate(0, -50%);
+}
+
+.citihome {
+	height: 50px;
+	width: 150px;
+	top: 10px;
+	left: 10px;
+	background-image: url(../images/homepage.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	position: absolute;
+	border: none;
+	color: #fff;
+	padding-bottom: 9px;
+	font-size: 18px;
+	font-family: "Jaini Purva", system-ui;
+	letter-spacing: 1px;
+}
+
+.citihome:hover {
+	transform: scale(1.1);
+}
+
+
+@media screen and (max-width: 768px) {
+	.character-container {
+		gap: 10px;
+		padding: 10px;
+	}
+
+	.character-card {
+		flex: 0 1 150px;
+	}
+
+	.character-card:hover {
+		flex-basis: 300px;
+	}
+
+	.card-detail {
+		width: 300px;
+	}
+
+	.detail-content {
+		flex-direction: column;
+		height: auto;
+		padding: 15px;
+	}
+
+	.character-full {
+		width: 120px;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.character-container {
+		max-width: 1440px;
+		margin: 0 auto;
+	}
+}
