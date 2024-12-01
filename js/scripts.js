@@ -42,43 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const musicIcon = document.getElementById('music-icon1');
             const isPlaying = localStorage.getItem('musicPlaying') === 'true';
             const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            // 检测浏览器类型
             const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
             try {
                 music.currentTime = savedTime;
 
                 if (isPlaying) {
-                    if (isMobile) {
-                        // 移动设备：需要用户交互才能播放
-                        document.addEventListener('touchstart', async () => {
-                            try {
-                                await music.play();
-                                musicIcon.src = 'images/musicstop.png';
-                            } catch (err) {
-                                console.log('移动设备播放失败:', err);
-                                musicIcon.src = 'images/musicplay.png';
-                            }
-                        }, { once: true });
-                    } else if (isFirefox) {
-                        // 火狐浏览器特殊处理：等待加载完成
-                        await new Promise(resolve => {
-                            music.addEventListener('loadeddata', async () => {
-                                try {
-                                    await music.play();
-                                    musicIcon.src = 'images/musicstop.png';
-                                    resolve();
-                                } catch (err) {
-                                    console.log('Firefox播放失败:', err);
-                                    musicIcon.src = 'images/musicplay.png';
-                                    resolve();
-                                }
-                            }, { once: true });
-                        });
-                    } else {
-                        // 其他桌面浏览器正常处理
+                    if (!isFirefox && !isMobile) {
+                        // Chrome和Safari桌面版：直接尝试播放
                         await music.play();
                         musicIcon.src = 'images/musicstop.png';
+                    } else {
+                        // Firefox和移动设备：显示播放按钮
+                        musicIcon.src = 'images/musicplay.png';
                     }
                 } else {
                     music.pause();
