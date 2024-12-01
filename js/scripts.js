@@ -634,6 +634,22 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (path.includes("scenery.html")) {
         let next = document.querySelector('.nex');
         let prev = document.querySelector('.pre');
+        let playButton = document.querySelector('.plays');
+        let isFirstLoad = true;  // 用于追踪是否是首次加载
+
+        // 浏览器检测
+        const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+        const isEdge = navigator.userAgent.indexOf("Edg") !== -1;
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isAutoPlayBrowser = (isChrome || isEdge) && !isMobile;
+
+        // 初始化音乐控制按钮
+        if (!isAutoPlayBrowser) {
+            playButton.innerHTML = '<img src="images/musicplay2.png" alt="music control" class="music-icon">';
+            playButton.style.visibility = 'visible';
+        } else {
+            playButton.style.visibility = 'hidden';  // Chrome/Edge隐藏按钮
+        }
 
         // 控制音频播放的函数
         function updateAudio() {
@@ -646,27 +662,52 @@ document.addEventListener("DOMContentLoaded", () => {
                 audio.currentTime = 0;
             });
 
-            // 只播放当前显示项的音频（第二个items，因为CSS中第二个是显示的）
+            // 获取当前显示的音频
             const activeAudio = items[1].querySelector('audio');
+
             if (activeAudio) {
-                activeAudio.play().catch(err => console.log("Playback failed:", err));
+                if (isAutoPlayBrowser) {
+                    // Chrome/Edge直接播放
+                    activeAudio.play().catch(err => console.log("Playback failed:", err));
+                } else if (isFirstLoad) {
+                    // 其他浏览器首次加载，显示播放按钮
+                    playButton.style.visibility = 'visible';
+                    playButton.innerHTML = '<img src="images/musicplay2.png" alt="music control" class="music-icon">';
+                } else {
+                    // 其他浏览器非首次加载，直接播放
+                    activeAudio.play().catch(err => console.log("Playback failed:", err));
+                    playButton.style.visibility = 'hidden';
+                }
             }
         }
 
-        // 初始化时控制音频
-        updateAudio();
+        // 播放按钮点击事件（只用于第一个场景且非Chrome/Edge）
+        if (!isAutoPlayBrowser) {
+            playButton.addEventListener('click', () => {
+                const items = document.querySelectorAll('.items');
+                const activeAudio = items[1].querySelector('audio');
+                if (activeAudio && activeAudio.paused) {
+                    activeAudio.play().catch(err => console.log("Playback failed:", err));
+                    isFirstLoad = false;
+                    playButton.innerHTML = '<img src="images/musicstop2.png" alt="music control" class="music-icon">';
+                    setTimeout(() => {
+                        playButton.style.visibility = 'hidden';
+                    }, 500); // 给用户一个视觉反馈后隐藏按钮
+                }
+            });
+        }
 
         next.addEventListener('click', function () {
             let items = document.querySelectorAll('.items');
             document.querySelector('.slides2').appendChild(items[0]);
-            // 更新音频状态
+            isFirstLoad = false;  // 切换后就不是首次加载了
             updateAudio();
         });
 
         prev.addEventListener('click', function () {
             let items = document.querySelectorAll('.items');
             document.querySelector('.slides2').prepend(items[items.length - 1]);
-            // 更新音频状态
+            isFirstLoad = false;  // 切换后就不是首次加载了
             updateAudio();
         });
 
@@ -676,6 +717,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "homepage.html";
             });
         });
+
         // 页面离开时停止所有音频
         window.addEventListener('beforeunload', () => {
             const allAudios = document.querySelectorAll('audio');
@@ -683,6 +725,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 audio.pause();
             });
         });
+
+        // 初始化音频
+        updateAudio();
     } else if (path.includes("towncitizen.html")) {
         const shome = document.querySelector('.citihome');
         shome.addEventListener('click', () => {
