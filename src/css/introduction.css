@@ -63,7 +63,7 @@
     font-family: "Jaini Purva", system-ui;
     font-size: 12px;
     margin: 10px 0;
-    line-height: 20px;
+    line-height: 15px;
 }
 
 .explorebutton {
@@ -115,7 +115,7 @@
     transform: scale(1.1);
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 500px) {
     .intro-bg {
         aspect-ratio: 1 / 0.95;
     }
