@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jaini+Purva&family=Julee&family=Protest+Revolution&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.intro {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.lingxi {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.lingxi.fade {
+    opacity: 0;
+}
+
+.lingxi {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.content-container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.bg-circle {
+    width: 250px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.loadingbarcontainer {
+    width: 50%;
+    position: absolute;
+    top: calc(30% + 125px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.loadingbar {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.rolling-ball {
+    width: 40px;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    z-index: 1;
+}
+
+@media screen and (min-width: 768px) {
+    .intro {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+
+    .lingxi {
+        opacity: 1;
+        transition: opacity 1s ease;
+    }
+
+    .lingxi.fade {
+        opacity: 0;
+    }
+
+    .lingxi {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .content-container {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    .bg-circle {
+        width: 400px;
+        aspect-ratio: 1/1;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .loadingbarcontainer {
+        width: 60%;
+        position: absolute;
+        top: calc(30% + 250px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .loadingbar {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .rolling-ball {
+        width: 60px;
+        position: absolute;
+        top: -17px;
+        left: 0;
+        z-index: 1;
+    }
+
+}
+
+/* 大屏设备 (1440px及以上) */
+@media screen and (min-width: 1440px) {
+    .intro {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+
+    .lingxi {
+        opacity: 1;
+        transition: opacity 1s ease;
+    }
+
+    .lingxi.fade {
+        opacity: 0;
+    }
+
+    .lingxi {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .content-container {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    .bg-circle {
+        width: 500px;
+        aspect-ratio: 1/1;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .loadingbarcontainer {
+        width: 60%;
+        position: absolute;
+        top: calc(30% + 350px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .loadingbar {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .rolling-ball {
+        width: 80px;
+        position: absolute;
+        top: -38px;
+        left: 0;
+        z-index: 1;
+    }
+
+}
