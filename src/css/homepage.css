@@ -10,39 +10,41 @@
 .homepage {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    overflow: hidden;
     display: flex;
     overflow: hidden;
+    position: fixed;
 }
+
 
 .homepage-container {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url(../images/homepage-bg1.png);
+    background-image: url(../images/homepage-bg3.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    overflow: hidden;
 }
 
 .cover {
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: absolute;
     margin: 0;
     padding: 0;
     z-index: 100;
+    overflow: hidden;
 }
 
 .leftcover,
 .rightcover {
     width: 50vw;
     height: 100vh;
-    max-height: 100vh;
+    max-height: 101vh;
     transition: transform 0.5s ease;
 }
 
@@ -77,15 +79,16 @@
 
 .mainhomepage {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    top: 30%;
+    height: 35%;
     z-index: 10;
 }
 
 .scenery {
     position: absolute;
     top: 20%;
-    right: 5%;
+    right: 2%;
     width: 18%;
     height: 65%;
     transition: 0.5s ease;
@@ -94,7 +97,7 @@
 .pet {
     position: absolute;
     top: 20%;
-    left: 7%;
+    left: 4%;
     width: 18%;
     height: 65%;
     transition: 0.5s ease;
@@ -103,7 +106,6 @@
 
 .nonbs {
     position: absolute;
-    bottom: -3%;
     right: 49.5%;
     transform: translateX(50%);
     width: 100%;
@@ -113,7 +115,7 @@
 
 .clickbs {
     position: absolute;
-    top: 35%;
+    top: 32%;
     right: 40%;
     width: 18%;
     height: 33%;
@@ -124,9 +126,9 @@
 
 .children {
     position: absolute;
-    bottom: 0;
-    right: 25%;
-    width: 25%;
+    bottom: 1%;
+    right: 15%;
+    width: 40%;
     height: auto;
     z-index: -5;
     transition: 0.5s ease;
@@ -146,10 +148,10 @@
 
 .music-control2 {
     position: absolute;
-    top: 1.5%;
+    top: -13%;
     right: 3.5%;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background: none;
     border: none;
     padding: 0;
@@ -172,90 +174,119 @@
 .back1 {
     background-image: url(../images/homepage2.png);
     font-family: "Jaini Purva", system-ui;
-    font-size: 22px;
+    font-size: 12px;
     color: white;
     margin: 10px;
     padding: 5px;
     height: 15px;
     letter-spacing: 0.1em;
-    top: 3%;
-    left: 1.5%;
+    top: -11%;
+    left: -3%;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
-    width: 100px;
     position: absolute;
     border: none;
-    padding-bottom: 40px;
-    padding-left: 28px;
     text-align: left;
     transform: translate(0, -50%);
+    font-size: 14px;
+    width: 80px;
+    height: 12px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    background-size: 80% auto;
 }
 
 .back1:hover {
     color: black;
 }
 
-@media screen and (min-width: 768px) {}
-
-
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 768px) {
     .homepage-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
         background-image: url(../images/homepage-bg1.png);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        min-height: 100vh;
-    }
-
-    .cover {
-        display: flex;
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        z-index: 100;
-    }
-
-    .leftcover,
-    .rightcover {
-        width: 50vw;
-        height: auto;
-        max-height: 100vh;
-        transition: transform 0.5s ease;
-    }
-
-    .hover-left,
-    .hover-right {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 150px;
-        cursor: pointer;
-    }
-
-    .hover-left {
-        left: 50%;
-        transform: translateX(-100%);
-        z-index: 10;
-    }
-
-    .hover-right {
-        right: 50%;
-        transform: translateX(100%);
-        z-index: 10;
     }
 
     .mainhomepage {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-        z-index: 10;
+        height: 100%;
+        top: 0;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    .scenery {
+        top: 20%;
+        height: 60%;
+    }
+
+    .pet {
+        top: 20%;
+        height: 60%;
+    }
+
+
+    .nonbs {
+        bottom: -3%;
+        right: 49.5%;
+        width: 110%;
+        height: 100%;
+    }
+
+    .clickbs {
+        top: 35%;
+        right: 38.5%;
+        width: 20%;
+        height: 35%;
+    }
+
+    .children {
+        right: 10%;
+        width: 350px;
+    }
+
+    .music-control2 {
+        right: 3.5%;
+        width: 50px;
+        height: 50px;
+        top: 3%;
+    }
+
+
+    .back1 {
+        font-size: 22px;
+        margin: 10px;
+        padding: 5px;
+        height: 15px;
+        top: 5%;
+        left: 1.5%;
+        background-size: contain;
+        width: 100px;
+        padding-bottom: 40px;
+        padding-left: 28px;
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+
+
+    .homepage-container {
+        background-image: url(../images/homepage-bg1.png);
+    }
+
+    .mainhomepage {
+        height: 100%;
+        top: 0;
+    }
+
+
+    .homepage-container {
+        background-image: url(../images/homepage-bg1.png);
     }
 
     .scenery {
@@ -321,55 +352,24 @@
 
 
     .music-control2 {
-        position: absolute;
-        top: 1.5%;
         right: 3.5%;
         width: 50px;
         height: 50px;
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    .music-icon2,
-    .back-icon1 {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    .music-icon2:hover {
-        transform: scale(0.9);
+        top: 3%;
     }
 
 
     .back1 {
-        background-image: url(../images/homepage2.png);
-        font-family: "Jaini Purva", system-ui;
         font-size: 22px;
-        color: white;
         margin: 10px;
         padding: 5px;
         height: 15px;
-        letter-spacing: 0.1em;
-        top: 3%;
+        top: 5%;
         left: 1.5%;
         background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: transparent;
         width: 100px;
-        position: absolute;
-        border: none;
         padding-bottom: 40px;
         padding-left: 28px;
-        text-align: left;
-        transform: translate(0, -50%);
     }
 
-    .back1:hover {
-        color: black;
-    }
 }
