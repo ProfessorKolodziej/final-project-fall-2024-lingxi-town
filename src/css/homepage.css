@@ -80,7 +80,7 @@
 .mainhomepage {
     position: relative;
     width: 100%;
-    top: 30%;
+    top: 33%;
     height: 35%;
     z-index: 10;
 }
@@ -202,7 +202,7 @@
     color: black;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .homepage-container {
         background-image: url(../images/homepage-bg1.png);
     }
