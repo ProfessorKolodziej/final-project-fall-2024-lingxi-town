@@ -1,0 +1,539 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jaini+Purva&family=Julee&family=Protest+Revolution&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.homepage {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.homepage-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/homepage-bg1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.cover {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    transform: translateX(-25%);
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+}
+
+.leftcover,
+.rightcover {
+    width: 100vw;
+    height: auto;
+    max-height: 100vh;
+    transition: transform 0.5s ease;
+}
+
+.hover-left,
+.hover-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    cursor: pointer;
+}
+
+.hover-left {
+    left: 50%;
+    transform: translateX(-100%);
+    z-index: 10;
+}
+
+.hover-right {
+    right: 50%;
+    transform: translateX(100%);
+    z-index: 10;
+}
+
+.mainhomepage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+}
+
+.scenery {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    width: 18%;
+    height: 65%;
+    transition: 0.5s ease;
+}
+
+.pet {
+    position: absolute;
+    top: 20%;
+    left: 7%;
+    width: 18%;
+    height: 65%;
+    transition: 0.5s ease;
+}
+
+
+.nonbs {
+    position: absolute;
+    bottom: -3%;
+    right: 49.5%;
+    transform: translateX(50%);
+    width: 100%;
+    height: 100%;
+    z-index: -20;
+}
+
+.clickbs {
+    position: absolute;
+    top: 35%;
+    right: 40%;
+    width: 18%;
+    height: 33%;
+    cursor: pointer;
+    z-index: -10;
+    transition: 0.5s ease;
+}
+
+.children {
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    width: 25%;
+    height: auto;
+    z-index: -5;
+    transition: 0.5s ease;
+}
+
+.comeforward {
+    z-index: 100;
+}
+
+.pet:hover,
+.scenery:hover,
+.children:hover,
+.clickbs:hover {
+    transform: scale(1.1);
+}
+
+
+.music-control2 {
+    position: absolute;
+    top: 1.5%;
+    right: 3.5%;
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.music-icon2,
+.back-icon1 {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.music-icon2:hover {
+    transform: scale(0.9);
+}
+
+
+.back1 {
+    background-image: url(../images/homepage2.png);
+    font-family: "Jaini Purva", system-ui;
+    font-size: 22px;
+    color: white;
+    margin: 10px;
+    padding: 5px;
+    height: 15px;
+    letter-spacing: 0.1em;
+    top: 3%;
+    left: 1.5%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 100px;
+    position: absolute;
+    border: none;
+    padding-bottom: 40px;
+    padding-left: 28px;
+    text-align: left;
+    transform: translate(0, -50%);
+}
+
+.back1:hover {
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+    .homepage-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-image: url(../images/homepage-bg1.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+    }
+
+    .cover {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        z-index: 100;
+    }
+
+    .leftcover,
+    .rightcover {
+        width: 50vw;
+        height: auto;
+        max-height: 100vh;
+        transition: transform 0.5s ease;
+    }
+
+    .hover-left,
+    .hover-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 150px;
+        cursor: pointer;
+    }
+
+    .hover-left {
+        left: 50%;
+        transform: translateX(-100%);
+        z-index: 10;
+    }
+
+    .hover-right {
+        right: 50%;
+        transform: translateX(100%);
+        z-index: 10;
+    }
+
+    .mainhomepage {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+    }
+
+    .scenery {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        width: 18%;
+        height: 65%;
+        transition: 0.5s ease;
+    }
+
+    .pet {
+        position: absolute;
+        top: 20%;
+        left: 7%;
+        width: 18%;
+        height: 65%;
+        transition: 0.5s ease;
+    }
+
+
+    .nonbs {
+        position: absolute;
+        bottom: -3%;
+        right: 49.5%;
+        transform: translateX(50%);
+        width: 100%;
+        height: 100%;
+        z-index: -20;
+    }
+
+    .clickbs {
+        position: absolute;
+        top: 35%;
+        right: 40%;
+        width: 18%;
+        height: 33%;
+        cursor: pointer;
+        z-index: -10;
+        transition: 0.5s ease;
+    }
+
+    .children {
+        position: absolute;
+        bottom: 0;
+        right: 25%;
+        width: 25%;
+        height: auto;
+        z-index: -5;
+        transition: 0.5s ease;
+    }
+
+    .comeforward {
+        z-index: 100;
+    }
+
+    .pet:hover,
+    .scenery:hover,
+    .children:hover,
+    .clickbs:hover {
+        transform: scale(1.1);
+    }
+
+
+    .music-control2 {
+        position: absolute;
+        top: 1.5%;
+        right: 3.5%;
+        width: 50px;
+        height: 50px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .music-icon2,
+    .back-icon1 {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .music-icon2:hover {
+        transform: scale(0.9);
+    }
+
+
+    .back1 {
+        background-image: url(../images/homepage2.png);
+        font-family: "Jaini Purva", system-ui;
+        font-size: 22px;
+        color: white;
+        margin: 10px;
+        padding: 5px;
+        height: 15px;
+        letter-spacing: 0.1em;
+        top: 3%;
+        left: 1.5%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        width: 100px;
+        position: absolute;
+        border: none;
+        padding-bottom: 40px;
+        padding-left: 28px;
+        text-align: left;
+        transform: translate(0, -50%);
+    }
+
+    .back1:hover {
+        color: black;
+    }
+}
+
+
+@media screen and (min-width: 1440px) {
+    .homepage-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-image: url(../images/homepage-bg1.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+    }
+
+    .cover {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        z-index: 100;
+    }
+
+    .leftcover,
+    .rightcover {
+        width: 50vw;
+        height: auto;
+        max-height: 100vh;
+        transition: transform 0.5s ease;
+    }
+
+    .hover-left,
+    .hover-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 150px;
+        cursor: pointer;
+    }
+
+    .hover-left {
+        left: 50%;
+        transform: translateX(-100%);
+        z-index: 10;
+    }
+
+    .hover-right {
+        right: 50%;
+        transform: translateX(100%);
+        z-index: 10;
+    }
+
+    .mainhomepage {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+    }
+
+    .scenery {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        width: 18%;
+        height: 65%;
+        transition: 0.5s ease;
+    }
+
+    .pet {
+        position: absolute;
+        top: 20%;
+        left: 7%;
+        width: 18%;
+        height: 65%;
+        transition: 0.5s ease;
+    }
+
+
+    .nonbs {
+        position: absolute;
+        bottom: -3%;
+        right: 49.5%;
+        transform: translateX(50%);
+        width: 100%;
+        height: 100%;
+        z-index: -20;
+    }
+
+    .clickbs {
+        position: absolute;
+        top: 35%;
+        right: 40%;
+        width: 18%;
+        height: 33%;
+        cursor: pointer;
+        z-index: -10;
+        transition: 0.5s ease;
+    }
+
+    .children {
+        position: absolute;
+        bottom: 0;
+        right: 25%;
+        width: 25%;
+        height: auto;
+        z-index: -5;
+        transition: 0.5s ease;
+    }
+
+    .comeforward {
+        z-index: 100;
+    }
+
+    .pet:hover,
+    .scenery:hover,
+    .children:hover,
+    .clickbs:hover {
+        transform: scale(1.1);
+    }
+
+
+    .music-control2 {
+        position: absolute;
+        top: 1.5%;
+        right: 3.5%;
+        width: 50px;
+        height: 50px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .music-icon2,
+    .back-icon1 {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .music-icon2:hover {
+        transform: scale(0.9);
+    }
+
+
+    .back1 {
+        background-image: url(../images/homepage2.png);
+        font-family: "Jaini Purva", system-ui;
+        font-size: 22px;
+        color: white;
+        margin: 10px;
+        padding: 5px;
+        height: 15px;
+        letter-spacing: 0.1em;
+        top: 3%;
+        left: 1.5%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        width: 100px;
+        position: absolute;
+        border: none;
+        padding-bottom: 40px;
+        padding-left: 28px;
+        text-align: left;
+        transform: translate(0, -50%);
+    }
+
+    .back1:hover {
+        color: black;
+    }
+}
