@@ -7,11 +7,6 @@
 }
 
 .intro {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-width: 100vw;
     min-height: 100vh;
 }
@@ -19,44 +14,34 @@
 .lingxi {
     opacity: 1;
     transition: opacity 1s ease;
+    width: 100vw;
+    height: 100vh;
 }
 
 .lingxi.fade {
     opacity: 0;
 }
 
-.lingxi {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-}
-
 .content-container {
     width: 100%;
     height: 100%;
-    text-align: center;
-    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    place-items: center;
 }
 
 .bg-circle {
     width: 250px;
     aspect-ratio: 1/1;
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 10rem;
+    margin-bottom: 2rem;
 }
 
+/* 使用一个包装器来保持 loadingbar 和 ball 的相对位置 */
 .loadingbarcontainer {
-    width: 50%;
-    position: absolute;
-    top: calc(30% + 125px);
-    left: 50%;
-    transform: translateX(-50%);
+    width: 60%;
+    position: relative;
+    /* 为子元素提供定位上下文 */
 }
 
 .loadingbar {
@@ -66,6 +51,7 @@
     z-index: 2;
 }
 
+/* 保持小球相对于 loadingbar 的位置 */
 .rolling-ball {
     width: 40px;
     position: absolute;
@@ -75,144 +61,30 @@
 }
 
 @media screen and (min-width: 768px) {
-    .intro {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 100vw;
-        min-height: 100vh;
-    }
-
-    .lingxi {
-        opacity: 1;
-        transition: opacity 1s ease;
-    }
-
-    .lingxi.fade {
-        opacity: 0;
-    }
-
-    .lingxi {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    .content-container {
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        position: relative;
-    }
-
     .bg-circle {
         width: 400px;
         aspect-ratio: 1/1;
-        position: absolute;
-        top: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .loadingbarcontainer {
-        width: 60%;
-        position: absolute;
-        top: calc(30% + 250px);
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .loadingbar {
-        width: 100%;
-        height: 60px;
-        position: relative;
-        z-index: 2;
+        margin-top: 8rem;
+        margin-bottom: 2rem;
     }
 
     .rolling-ball {
         width: 60px;
-        position: absolute;
-        top: -17px;
-        left: 0;
-        z-index: 1;
+        top: -32px;
     }
-
 }
 
-/* 大屏设备 (1440px及以上) */
+
 @media screen and (min-width: 1440px) {
-    .intro {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 100vw;
-        min-height: 100vh;
-    }
-
-    .lingxi {
-        opacity: 1;
-        transition: opacity 1s ease;
-    }
-
-    .lingxi.fade {
-        opacity: 0;
-    }
-
-    .lingxi {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    .content-container {
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        position: relative;
-    }
-
     .bg-circle {
         width: 500px;
         aspect-ratio: 1/1;
-        position: absolute;
-        top: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .loadingbarcontainer {
-        width: 60%;
-        position: absolute;
-        top: calc(30% + 350px);
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .loadingbar {
-        width: 100%;
-        height: 60px;
-        position: relative;
-        z-index: 2;
+        margin-top: 4rem;
+        margin-bottom: 3rem;
     }
 
     .rolling-ball {
         width: 80px;
-        position: absolute;
-        top: -38px;
-        left: 0;
-        z-index: 1;
+        top: -53px;
     }
-
 }
