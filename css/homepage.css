@@ -32,7 +32,6 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    transform: translateX(-25%);
     margin: 0;
     padding: 0;
     z-index: 100;
@@ -40,8 +39,8 @@
 
 .leftcover,
 .rightcover {
-    width: 100vw;
-    height: auto;
+    width: 50vw;
+    height: 100vh;
     max-height: 100vh;
     transition: transform 0.5s ease;
 }
@@ -65,6 +64,14 @@
     right: 50%;
     transform: translateX(100%);
     z-index: 10;
+}
+
+#hand-right,
+#hand-left {
+    width: 60px;
+    top: 45%;
+    margin: -25px;
+    z-index: 9;
 }
 
 .mainhomepage {

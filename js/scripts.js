@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const isEdge = navigator.userAgent.indexOf("Edg") !== -1;
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+
             try {
                 music.currentTime = savedTime;
 
@@ -180,14 +181,49 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+        function getScreenWidth() {
+            return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        }
+
+        // 更新图片源函数
+        function updateImageSources() {
+            // 获取屏幕宽度
+            const screenWidth = getScreenWidth();
+
+            // 如果屏幕宽度小于768px
+            if (screenWidth < 768) {
+                // 更新图片源
+                document.querySelector(".leftcover").src = "images/leftcover1.png";
+                document.querySelector(".rightcover").src = "images/rightcover1.png";
+            } else {
+                // 恢复原来的图片源
+                document.querySelector(".leftcover").src = "images/leftcover.png";
+                document.querySelector(".rightcover").src = "images/rightcover.png";
+            }
+        }
+
+        // 页面加载时调用updateImageSources函数
+        window.addEventListener("load", updateImageSources);
+
+        // 屏幕大小改变时调用updateImageSources函数
+        window.addEventListener("resize", updateImageSources);
+
         // 原有的 UI 元素
         const hoverright = document.getElementById("hover-right");
         const hoverleft = document.getElementById("hover-left");
+        const handright = document.getElementById("hand-right");
+        const handleft = document.getElementById("hand-left");
         const coverright = document.querySelector(".leftcover");
         const coverleft = document.querySelector(".rightcover");
         const comefw = document.querySelector('.mainhomepage');
-        const musicfw = document.querySelector('#music-control2');
+        const musicfw = document.querySelector('.music-control2');
 
+        const isMobile2 = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (!isMobile2) {
+            handright.style.display = 'none';
+            handleft.style.display = 'none';
+        }
         // 动画相关函数
         function addHoverEffect() {
             coverleft.style.transform = "translateX(20px)";
@@ -206,11 +242,15 @@ document.addEventListener("DOMContentLoaded", () => {
             coverright.style.transition = "transform 2s ease";
             hoverleft.style.transition = "transform 2s ease";
             hoverright.style.transition = "transform 2s ease";
+            handleft.style.transition = "transform 2s ease";
+            handright.style.transition = "transform 2s ease";
 
             coverright.style.transform = "translateX(-680px)";
             coverleft.style.transform = "translateX(680px)";
             hoverright.style.transform = "translateX(-680px)";
             hoverleft.style.transform = "translateX(680px)";
+            handright.style.transform = "translateX(680px)";
+            handleft.style.transform = "translateX(-680px)";
 
             // 移除事件监听
             hoverright.removeEventListener("mouseenter", addHoverEffect);
