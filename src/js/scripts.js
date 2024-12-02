@@ -218,12 +218,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const comefw = document.querySelector('.mainhomepage');
         const musicfw = document.querySelector('.music-control2');
 
-        const isMobile2 = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-        if (!isMobile2) {
+        if (!isMobile) {
             handright.style.display = 'none';
             handleft.style.display = 'none';
         }
+
         // 动画相关函数
         function addHoverEffect() {
             coverleft.style.transform = "translateX(20px)";
