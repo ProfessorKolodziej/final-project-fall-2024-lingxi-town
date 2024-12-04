@@ -222,6 +222,7 @@
     }
 
     .character-icon {
+        display: block;
         width: clamp(100px, 10vw, 120px);
         height: clamp(180px, 20vw, 240px);
         object-fit: contain;
@@ -463,6 +464,7 @@
     }
 
     .character-icon {
+        display: block;
         width: clamp(100px, 10vw, 120px);
         height: clamp(180px, 20vw, 240px);
         object-fit: contain;
