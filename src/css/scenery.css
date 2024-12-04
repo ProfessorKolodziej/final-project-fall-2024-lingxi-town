@@ -1,5 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jaini+Purva&family=Julee&family=Long+Cang&family=Protest+Revolution&display=swap');
 
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+
+    .slides2 .items:nth-child(2) .contents,
+    .slides2 .items:nth-child(2) .scenehome,
+    .slides2 .items:nth-child(2) .text-background {
+        display: block;
+    }
+
+    .contents .des {
+        font-weight: 600;
+    }
+
+    .items .contents {
+        width: 300px;
+        top: 46%;
+    }
+
+    #i5 .contents .des {
+        width: 300px;
+    }
+
+    #i5 .contents {
+        width: 300px;
+    }
+
+    .scenehome {
+        top: 6%;
+    }
+
+    .slides2 .items:nth-child(3) {
+        left: 95%;
+        z-index: 1111;
+    }
+
+    .slides2 .items:nth-child(4) {
+        left: 95%;
+        z-index: 999;
+    }
+
+    .slides2 .items:nth-child(5) {
+        left: 95%;
+        z-index: 888;
+    }
+
+    .slides2 .items:nth-child(6) {
+        left: 95%;
+        z-index: 777;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .slides2 .items:nth-child(2) .contents,
+    .slides2 .items:nth-child(2) .scenehome,
+    .slides2 .items:nth-child(2) .text-background {
+        display: block;
+    }
+
+    .contents .des {
+        font-weight: 500;
+    }
+
+    .items .contents {
+        width: 400px;
+    }
+
+    #i5 .contents .des {
+        width: 400px;
+    }
+
+    #i5 .contents {
+        width: 500px;
+    }
+
+    .slides2 .items:nth-child(3) {
+        left: 95%;
+        z-index: 1111;
+    }
+
+    .slides2 .items:nth-child(4) {
+        left: 95%;
+        z-index: 999;
+    }
+
+    .slides2 .items:nth-child(5) {
+        left: 95%;
+        z-index: 888;
+    }
+
+    .slides2 .items:nth-child(6) {
+        left: 95%;
+        z-index: 777;
+    }
+
+
+}
+
 * {
     margin: 0;
     padding: 0;
