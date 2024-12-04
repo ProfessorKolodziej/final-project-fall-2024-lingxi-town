@@ -797,5 +797,80 @@ document.addEventListener("DOMContentLoaded", () => {
         shome.addEventListener('click', () => {
             window.location.href = "homepage.html";
         });
+        const nameTriggers = document.querySelectorAll('.character-name');
+        console.log("找到的名字元素数量:", nameTriggers.length);
+        let currentActive = null;
+
+        // 为每个触发器添加点击事件
+        nameTriggers.forEach(trigger => {
+            console.log("添加点击事件到:", trigger.textContent);
+            trigger.addEventListener('click', function (e) {
+                e.stopPropagation();
+
+                const card = this.closest('.character-card');
+                const audio = card.querySelector('.character-audio');
+
+                if (card === currentActive) {
+                    card.classList.remove('active');
+                    if (audio) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
+                    currentActive = null;
+                    return;
+                }
+
+                if (currentActive) {
+                    currentActive.classList.remove('active');
+                    const prevAudio = currentActive.querySelector('.character-audio');
+                    if (prevAudio) {
+                        prevAudio.pause();
+                        prevAudio.currentTime = 0;
+                    }
+                }
+
+                card.classList.add('active');
+                currentActive = card;
+
+                if (audio) {
+                    audio.currentTime = 0;
+                    audio.play().catch(error => {
+                        console.log('音频播放失败:', error);
+                    });
+                }
+            });
+        });
+
+        // 点击页面其他区域关闭当前激活的卡片
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.character-card') && currentActive) {
+                currentActive.classList.remove('active');
+
+                const audio = currentActive.querySelector('.character-audio');
+                if (audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+
+                currentActive = null;
+            }
+        });
+
+        // ESC键关闭当前激活的卡片
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && currentActive) {
+                currentActive.classList.remove('active');
+
+                const audio = currentActive.querySelector('.character-audio');
+                if (audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+
+                currentActive = null;
+            }
+        });
+
+
     }
 })
