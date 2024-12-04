@@ -43,6 +43,7 @@
 }
 
 .character-icon {
+    display: none;
     width: clamp(100px, 10vw, 120px);
     height: clamp(180px, 20vw, 240px);
     object-fit: contain;
@@ -634,7 +635,7 @@
         flex: 0 1 clamp(180px, 15vw, 200px);
         position: relative;
         transition: all 0.5s ease;
-        height: 300px;
+        height: 350px;
     }
 
     .card-normal {
@@ -700,7 +701,7 @@
         display: flex;
         gap: 20px;
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-        height: 500px;
+        height: 450px;
     }
 
     .character-full {
@@ -793,5 +794,117 @@
     .character-name:hover {
         transform: scale(0.9);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .character-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 10px;
+        gap: 15px;
+    }
+
+    .character-card {
+        flex: none;
+        width: 100%;
+        height: 80px;
+        /* 收起状态的高度 */
+        transition: all 0.4s ease;
+    }
+
+    .card-normal {
+        flex-direction: row;
+        padding: 10px 15px;
+        gap: 15px;
+        height: 100%;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .character-icon {
+        display: block;
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .character-name {
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 英文名和中文名并排 */
+    #n1,
+    #n2,
+    #n3,
+    #n4,
+    #n5 {
+        margin: 0;
+        margin-right: 10px;
+    }
+
+    /* 展开时的样式 */
+    .character-card.active {
+        height: 400px;
+        /* 展开状态的高度 */
+        flex-basis: auto;
+    }
+
+    .card-detail {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .detail-content {
+        flex-direction: column;
+        height: 100%;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .character-full {
+        width: 120px;
+        height: 160px;
+        margin: 0 auto;
+    }
+
+    .character-text {
+        padding: 10px;
+    }
+
+    .character-text h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .character-text p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    /* 调整首页按钮位置 */
+    .citihome {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        height: 35px;
+        width: 120px;
+        font-size: 16px;
+    }
+
+    /* 重置特殊位置处理 */
+    .character-card.active:first-child .card-detail,
+    .character-card.active:last-child .card-detail {
+        left: 0;
+        right: auto;
+        transform: none;
     }
 }
