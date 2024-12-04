@@ -220,4 +220,8 @@
     .arrows {
         right: 18%;
     }
+
+    .pshell {
+        background-image: url(../images/petbg2.png);
+    }
 }
