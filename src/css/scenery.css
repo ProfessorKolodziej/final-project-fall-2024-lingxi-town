@@ -221,6 +221,33 @@
     height: 25px;
 }
 
+.container-s2 {
+    position: relative;
+    /* 改为relative */
+    width: 100vw;
+    height: 100vh;
+    background: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+    overflow: hidden;
+    /* 确保内容不会溢出 */
+}
+
+/* 修改按钮容器的定位 */
+.btn2 {
+    width: 100%;
+    position: fixed;
+    /* 改为fixed */
+    bottom: 20px;
+    /* 距离底部的距离 */
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    z-index: 9999;
+    /* 确保按钮始终可见 */
+}
+
+
 
 .scenehome {
     font-family: "Jaini Purva", system-ui;
@@ -315,6 +342,17 @@
         height: 20px;
     }
 
+    .btn2 {
+        bottom: 30px;
+        /* 在移动设备上距离底部更近一些 */
+    }
+
+    .container-s2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
 
     .slides2 .items:nth-child(2) .contents,
     .slides2 .items:nth-child(2) .text-background {
