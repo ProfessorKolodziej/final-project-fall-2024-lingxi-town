@@ -194,6 +194,14 @@
     border-radius: 8px;
     border: none;
     cursor: pointer;
+    color: black !important;
+    /* 强制使用黑色 */
+    -webkit-appearance: none;
+    /* 移除 iOS 默认按钮样式 */
+    -moz-appearance: none;
+    appearance: none;
+    text-decoration: none;
+    /* 移除可能的文本装饰 */
 }
 
 .btn2 button:hover {
@@ -236,13 +244,6 @@
     transform: translate(0, -50%);
     display: none;
     color: black !important;
-    /* 强制使用黑色 */
-    -webkit-appearance: none;
-    /* 移除 iOS 默认按钮样式 */
-    -moz-appearance: none;
-    appearance: none;
-    text-decoration: none;
-    /* 移除可能的文本装饰 */
 }
 
 .scenehome:hover {
