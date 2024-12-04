@@ -329,7 +329,7 @@
         justify-content: center;
         gap: 3px;
         z-index: 9999;
-        bottom: 120px;
+        bottom: 30px;
     }
 
 
@@ -350,7 +350,7 @@
         padding: 5px;
         height: 20px;
         letter-spacing: 0.05em;
-        top: 8%;
+        top: 30px;
         left: 0.5%;
         background-size: contain;
         background-position: center;
