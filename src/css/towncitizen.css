@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jaini+Purva&family=Julee&family=Long+Cang&family=Protest+Revolution&display=swap');
 
+/*the style and structurre is basically from the the vidoe i list int the html page, but i mmake it more chinese style and make alteration*/
 * {
     margin: 0;
     padding: 0;
@@ -302,7 +303,6 @@
         flex-basis: clamp(60px, 6vw, 80px);
     }
 
-    /* 激活的卡片样式 */
     .character-card.active {
         flex-basis: clamp(400px, 50vw, 600px);
         z-index: 2;
@@ -318,7 +318,6 @@
         visibility: visible;
     }
 
-    /* 特殊位置处理 */
     .character-card.active:first-child .card-detail {
         left: 0;
         transform: translate(0, -50%);
@@ -548,7 +547,6 @@
         flex-basis: clamp(60px, 6vw, 80px);
     }
 
-    /* 激活的卡片样式 */
     .character-card.active {
         flex-basis: clamp(400px, 50vw, 600px);
         z-index: 2;
@@ -564,7 +562,6 @@
         visibility: visible;
     }
 
-    /* 特殊位置处理 */
     .character-card.active:first-child .card-detail {
         left: 0;
         transform: translate(0, -50%);
@@ -749,7 +746,6 @@
         visibility: visible;
     }
 
-    /* 特殊位置处理 */
     .character-card.active:first-child .card-detail {
         left: 0;
         transform: translate(0, -50%);
@@ -860,10 +856,8 @@
         right: 15px;
     }
 
-    /* 展开时的样式 */
     .character-card.active {
         height: 400px;
-        /* 展开状态的高度 */
         flex-basis: auto;
     }
 
@@ -903,7 +897,6 @@
         line-height: 1.4;
     }
 
-    /* 调整首页按钮位置 */
     .citihome {
         position: fixed;
         top: 10px;
@@ -914,7 +907,6 @@
         z-index: 1111111;
     }
 
-    /* 重置特殊位置处理 */
     .character-card.active:first-child .card-detail,
     .character-card.active:last-child .card-detail {
         left: 0;
@@ -923,21 +915,14 @@
     }
 
     #char5-icon {
-        /* 给这个图标添加特殊的 id */
         position: absolute;
         left: 15px;
-        /* 距离左边的距离 */
         top: 50%;
         transform: translateY(-50%);
         width: 60px;
-        /* 可以调整大小 */
         height: 60px;
         object-fit: contain;
-        /* 保持图片比例 */
         border-radius: 0;
-        /* 移除圆形效果 */
     }
-
-
 
 }
