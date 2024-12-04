@@ -93,6 +93,7 @@
 .pbox img {
     width: 100%;
     transform: translateY(-50px);
+    object-fit: cover;
 }
 
 .pbox.selected {
@@ -131,4 +132,91 @@
 
 .scenehome:hover {
     color: white;
+}
+
+@media screen and (max-width: 599px) {
+    .pshell {
+        padding: 80px 0;
+        background-image: url(../images/petbg2.png);
+    }
+
+    .carousel {
+        width: 300px;
+        /* 缩小容器宽度 */
+        height: 400px;
+        padding-top: 100px;
+        perspective: 300px;
+        /* 调整3D视角 */
+    }
+
+    .pboxs {
+        width: 100%;
+        height: 120px;
+        /* 缩小容器高度 */
+    }
+
+    .pbox {
+        width: 300px;
+        /* 缩小框的宽度 */
+        height: 120px;
+        /* 缩小框的高度 */
+        border-width: 1px;
+        /* 缩小边框 */
+    }
+
+    .pbox img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* 图片自适应填充 */
+        object-position: center;
+        transform: none;
+        /* 移除Y轴偏移 */
+    }
+
+    .pbox.selected {
+        border-width: 3px;
+        /* 缩小选中状态的边框 */
+        box-shadow: 0 0 10px goldenrod,
+            inset 0 0 5px goldenrod;
+        /* 减小发光效果 */
+    }
+
+    .arrows {
+        /* 调整按钮位置 */
+        transform: translateY(-50%);
+        gap: 10px;
+        /* 按钮间距 */
+    }
+
+    .up,
+    .next {
+        width: 40px;
+        height: 30px;
+        font-size: 12px;
+        padding: 3px;
+        border-width: 2px;
+    }
+
+    .scenehome {
+        font-size: 14px;
+        width: 80px;
+        height: 60px;
+        height: 25px;
+        padding: 0 15px;
+        top: 5%;
+        left: 10px;
+
+    }
+
+    .arrows {
+        right: 0;
+        top: 45%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .arrows {
+        right: 18%;
+    }
 }
