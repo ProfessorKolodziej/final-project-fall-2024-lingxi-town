@@ -146,6 +146,7 @@
         height: 400px;
         padding-top: 100px;
         perspective: 300px;
+        margin-left: -50px;
         /* 调整3D视角 */
     }
 
