@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jaini+Purva&family=Julee&family=Long+Cang&family=Protest+Revolution&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.petpage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.pshell {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    padding: 130px 0;
+    background-image: url(../images/petbg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel {
+    position: relative;
+    width: 520px;
+    height: 500px;
+    padding-top: 150px;
+    perspective: 380px;
+}
+
+.arrows {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    right: 15px;
+    position: absolute;
+    top: 50%;
+    /* 垂直居中 */
+    right: 30%;
+    /* 调整这个值来控制距离 */
+    transform: translateY(-50%);
+}
+
+.up,
+.next {
+    margin: 5px 0;
+    font-family: "Julee", cursive;
+    padding: 5px;
+    width: 50px;
+    height: 5-px;
+    border-radius: 10px;
+    transition: .3s;
+    color: black;
+    background-color: #ffffff61;
+}
+
+.up:hover,
+.next:hover {
+    transform: scale(0.9);
+}
+
+.pboxs {
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+
+.pbox {
+    position: absolute;
+    width: 520px;
+    height: 200px;
+    border: 2px solid white;
+    overflow: hidden;
+    opacity: 0.7;
+}
+
+.pbox img {
+    width: 100%;
+    transform: translateY(-50px);
+}
+
+.pbox.selected {
+    border-image: linear-gradient(45deg, #ffd900a8, #daa5206a, #ffd9001e) 1;
+    border-width: 5px;
+    opacity: 1;
+    box-shadow: 0 0 15px goldenrod,
+        inset 0 0 10px goldenrod;
+
+}
+
+.scenehome {
+    font-family: "Jaini Purva", system-ui;
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
+    height: 35px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    top: 3%;
+    left: 0.5%;
+    background-image: url(../images/peoplebutton.PNG);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 150px;
+    position: absolute;
+    border: none;
+    padding-bottom: 40px;
+    padding-left: 35px;
+    text-align: left;
+    transform: translate(0, -50%);
+    color: black !important;
+}
+
+.scenehome:hover {
+    color: white;
+}

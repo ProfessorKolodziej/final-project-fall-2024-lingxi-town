@@ -417,6 +417,10 @@
 
 @media screen and (min-width: 1366px) {
 
+    .character-container {
+        background-image: url(../images/newbg.png);
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -434,7 +438,7 @@
         height: 100vh;
         flex-wrap: nowrap;
         overflow-x: hidden;
-        background-image: url(../images/newbg.png);
+        background-image: url(../images/newbg2.png);
         background-size: 100% 100%;
         position: relative;
     }
@@ -791,6 +795,10 @@
 }
 
 @media screen and (max-width: 767px) {
+    .character-container {
+        background-image: url(../images/newbg.png);
+    }
+
     .character-container {
         flex-direction: column;
         height: auto;
