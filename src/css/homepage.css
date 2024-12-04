@@ -127,8 +127,8 @@
 .children {
     position: absolute;
     bottom: 1%;
-    right: 15%;
-    width: 36%;
+    right: 12%;
+    width: 35%;
     height: auto;
     z-index: -5;
     transition: 0.5s ease;
@@ -149,7 +149,7 @@
 .music-control2 {
     position: absolute;
     top: -11.5%;
-    right: 3.5%;
+    right: 1%;
     width: 30px;
     height: 30px;
     background: none;
