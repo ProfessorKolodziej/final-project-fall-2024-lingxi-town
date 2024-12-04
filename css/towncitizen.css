@@ -821,6 +821,7 @@
         height: 100%;
         align-items: center;
         justify-content: flex-start;
+        position: relative;
     }
 
     .character-icon {
@@ -843,8 +844,19 @@
     #n3,
     #n4,
     #n5 {
+        position: absolute;
         margin: 0;
+        right: 100px;
         margin-right: 10px;
+    }
+
+    #nn1,
+    #nn2,
+    #nn3,
+    #nn4,
+    #nn5 {
+        position: absolute;
+        right: 15px;
     }
 
     /* 展开时的样式 */
@@ -898,6 +910,7 @@
         height: 35px;
         width: 120px;
         font-size: 16px;
+        z-index: 1111111;
     }
 
     /* 重置特殊位置处理 */
@@ -907,4 +920,23 @@
         right: auto;
         transform: none;
     }
+
+    #char5-icon {
+        /* 给这个图标添加特殊的 id */
+        position: absolute;
+        left: 15px;
+        /* 距离左边的距离 */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        /* 可以调整大小 */
+        height: 60px;
+        object-fit: contain;
+        /* 保持图片比例 */
+        border-radius: 0;
+        /* 移除圆形效果 */
+    }
+
+
+
 }
