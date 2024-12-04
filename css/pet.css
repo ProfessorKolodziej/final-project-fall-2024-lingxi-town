@@ -50,7 +50,7 @@
     position: absolute;
     top: 50%;
     /* 垂直居中 */
-    right: 30%;
+    right: 24%;
     /* 调整这个值来控制距离 */
     transform: translateY(-50%);
 }
