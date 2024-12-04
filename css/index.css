@@ -37,11 +37,9 @@
     margin-bottom: 2rem;
 }
 
-/* 使用一个包装器来保持 loadingbar 和 ball 的相对位置 */
 .loadingbarcontainer {
     width: 60%;
     position: relative;
-    /* 为子元素提供定位上下文 */
 }
 
 .loadingbar {
@@ -51,7 +49,7 @@
     z-index: 2;
 }
 
-/* 保持小球相对于 loadingbar 的位置 */
+/*i ask claude3.5 how to get the relative position of the small ball and how to make it move*/
 .rolling-ball {
     width: 40px;
     position: absolute;
