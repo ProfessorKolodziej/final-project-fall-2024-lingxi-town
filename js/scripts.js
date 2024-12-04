@@ -798,11 +798,51 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "homepage.html";
         });
         const nameTriggers = document.querySelectorAll('.character-name');
+        const nameTriggers2 = document.querySelectorAll('.character-icon');
         console.log("找到的名字元素数量:", nameTriggers.length);
         let currentActive = null;
 
         // 为每个触发器添加点击事件
         nameTriggers.forEach(trigger => {
+            console.log("添加点击事件到:", trigger.textContent);
+            trigger.addEventListener('click', function (e) {
+                e.stopPropagation();
+
+                const card = this.closest('.character-card');
+                const audio = card.querySelector('.character-audio');
+
+                if (card === currentActive) {
+                    card.classList.remove('active');
+                    if (audio) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
+                    currentActive = null;
+                    return;
+                }
+
+                if (currentActive) {
+                    currentActive.classList.remove('active');
+                    const prevAudio = currentActive.querySelector('.character-audio');
+                    if (prevAudio) {
+                        prevAudio.pause();
+                        prevAudio.currentTime = 0;
+                    }
+                }
+
+                card.classList.add('active');
+                currentActive = card;
+
+                if (audio) {
+                    audio.currentTime = 0;
+                    audio.play().catch(error => {
+                        console.log('音频播放失败:', error);
+                    });
+                }
+            });
+        });
+
+        nameTriggers2.forEach(trigger => {
             console.log("添加点击事件到:", trigger.textContent);
             trigger.addEventListener('click', function (e) {
                 e.stopPropagation();
