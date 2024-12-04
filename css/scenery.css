@@ -79,12 +79,6 @@
     display: none;
 }
 
-.slides2 .items:nth-child(2) .contents,
-.slides2 .items:nth-child(2) .text-background,
-.slides2 .items:nth-child(2) .scenehome {
-    display: block;
-}
-
 
 .contents .names {
     font-size: 35px;
@@ -295,6 +289,42 @@
     background-image: url(../images/homepagerain.png);
 }
 
+@media screen and (max-width:599px) {
+
+    .slides2 .items:nth-child(2) .contents,
+    .slides2 .items:nth-child(2) .text-background {
+        display: none;
+    }
+
+    .slides2 .items:nth-child(2) .scenehome {
+        display: block;
+    }
+
+    .scenehome {
+        font-family: "Jaini Purva", system-ui;
+        font-size: 12px;
+        color: black;
+        margin: 10px;
+        padding: 5px;
+        height: 20px;
+        letter-spacing: 0.05em;
+        top: 6%;
+        left: 0.5%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        width: 80px;
+        position: absolute;
+        border: none;
+        padding-bottom: 25px;
+        padding-left: 18px;
+        text-align: left;
+        transform: translate(0, -50%);
+        display: none;
+    }
+
+}
 
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
@@ -344,6 +374,15 @@
     .slides2 .items:nth-child(6) {
         left: 95%;
         z-index: 777;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1399px) {
+
+    .slides2 .items:nth-child(2) .contents,
+    .slides2 .items:nth-child(2) .scenehome,
+    .slides2 .items:nth-child(2) .text-background {
+        display: block;
     }
 }
 
