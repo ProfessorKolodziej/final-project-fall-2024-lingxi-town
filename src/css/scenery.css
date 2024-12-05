@@ -497,6 +497,26 @@
 	#i6 {
 		background-image: url('../images/scene_04.png');
 	}
+
+	.slides2 .items:nth-child(3) {
+		left: 95%;
+		z-index: 1111;
+	}
+
+	.slides2 .items:nth-child(4) {
+		left: 95%;
+		z-index: 999;
+	}
+
+	.slides2 .items:nth-child(5) {
+		left: 95%;
+		z-index: 888;
+	}
+
+	.slides2 .items:nth-child(6) {
+		left: 95%;
+		z-index: 777;
+	}
 }
 
 @media screen and (min-width: 1440px) {
@@ -566,3 +586,4 @@
 	#i6 {
 		background-image: url('../images/scene_04.png');
 	}
+}
